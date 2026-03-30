@@ -1,0 +1,201 @@
+import React from 'react';
+import { 
+  Coins, 
+  TrendingUp, 
+  Target, 
+  Layers, 
+  Zap, 
+  ArrowUpRight,
+  ExternalLink 
+} from 'lucide-react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+
+// --- Sub-Component: Spotlight Card ---
+// This creates the "light following the mouse" effect
+const ServiceCard = ({ service, index }) => {
+  let mouseX = useMotionValue(0);
+  let mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+      viewport={{ once: true }}
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10"
+    >
+      {/* Interactive Spotlight Background */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(37, 99, 235, 0.07),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+
+      <div>
+        {/* Icon Header */}
+        <div className="flex items-start justify-between">
+          <motion.div 
+            className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} text-white shadow-lg`}
+            whileHover={{ scale: 1.1, rotate: -5 }}
+          >
+            {React.cloneElement(service.icon, { size: 28 })}
+          </motion.div>
+          <motion.div 
+            className="rounded-full border border-slate-100 p-2 text-slate-400 group-hover:text-blue-600 transition-colors"
+            whileHover={{ rotate: 45 }}
+          >
+            <ArrowUpRight size={20} />
+          </motion.div>
+        </div>
+
+        {/* Content */}
+        <div className="mt-8">
+          <h4 className="text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors duration-300">
+            {service.title}
+          </h4>
+          <p className="mt-4 text-slate-500 leading-relaxed font-medium">
+            {service.desc}
+          </p>
+        </div>
+      </div>
+
+      {/* Footer Info */}
+      <div className="mt-10 flex items-center gap-3 overflow-hidden">
+        <div className="h-[1px] w-8 bg-slate-200 group-hover:w-12 group-hover:bg-blue-600 transition-all duration-500" />
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-900 transition-colors">
+          View Strategy
+        </span>
+      </div>
+    </motion.div>
+  );
+};
+
+const Services = () => {
+  const serviceList = [
+    {
+      title: "Equity Cash",
+      desc: "High-conviction intraday and delivery setups for blue-chip and mid-cap stocks.",
+      icon: <Coins />,
+      gradient: "from-blue-500 to-cyan-400"
+    },
+    {
+      title: "Equity Future",
+      desc: "Leveraged trading strategies designed for high-momentum equity derivatives.",
+      icon: <TrendingUp />,
+      gradient: "from-indigo-600 to-blue-500"
+    },
+    {
+      title: "Equity Option",
+      desc: "Precision Call & Put recommendations with strictly defined stop-loss and targets.",
+      icon: <Target />,
+      gradient: "from-purple-600 to-indigo-500"
+    },
+    {
+      title: "Index Future",
+      desc: "Expert direction on Nifty and Bank Nifty futures based on institutional flow.",
+      icon: <Layers />,
+      gradient: "from-blue-600 to-indigo-600"
+    },
+    {
+      title: "Index Option",
+      desc: "Specialized Nifty and Bank Nifty expiry strategies and hero-or-zero setups.",
+      icon: <Zap />,
+      gradient: "from-amber-400 to-orange-500"
+    }
+  ];
+
+  return (
+    <section id="services" className="py-24 bg-[#F8FAFC] relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-blue-200/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-indigo-200/20 rounded-full blur-[120px]" />
+        {/* Fine Noise Texture */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+          <div className="max-w-2xl">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="inline-block px-4 py-1.5 mb-6 text-[11px] font-black tracking-[0.3em] text-blue-600 uppercase bg-blue-50 rounded-full"
+            >
+              Our Expertise
+            </motion.span>
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter"
+            >
+              Premium Research <br />
+              <span className="text-slate-400/80 font-light italic">Verticals</span>
+            </motion.h3>
+          </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="max-w-xs text-slate-500 font-medium leading-relaxed border-l-2 border-blue-600 pl-6"
+          >
+            Institutional grade analysis for retail traders. Scalable strategies across all asset classes.
+          </motion.p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {serviceList.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} />
+          ))}
+
+          {/* Institutional CTA Card - Distinct Premium Style */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="relative group overflow-hidden rounded-[2.5rem] bg-slate-900 p-10 flex flex-col justify-center text-left min-h-[320px]"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+              <Layers size={120} className="text-white" />
+            </div>
+            
+            <h4 className="relative z-10 text-3xl font-bold text-white mb-4">
+              Custom <br /> Institutional
+            </h4>
+            <p className="relative z-10 text-slate-400 text-sm mb-8 max-w-[200px]">
+              Personalized portfolio advisory for high-volume traders.
+            </p>
+            
+            <motion.button 
+              className="relative z-10 flex items-center justify-center gap-2 w-fit px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-sm shadow-xl shadow-blue-900/20"
+              whileHover={{ scale: 1.05, backgroundColor: '#3b82f6' }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact Desk <ExternalLink size={16} />
+            </motion.button>
+
+            {/* Subtle mesh background for the black card */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent pointer-events-none" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

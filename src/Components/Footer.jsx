@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Twitter, 
   Linkedin, 
@@ -8,26 +9,27 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Phone,
-  Mail
+  Mail,
+  MapPin
 } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    quickLinks: [
-      { name: 'Home', href: '#home' },
-      { name: 'About Pavan', href: '#about' },
-      { name: 'SEBI Compliance', href: '#sebi' },
-      { name: 'Testimonials', href: '#testimonials' },
-      { name: 'Disclaimer', href: '#disclaimer' },
+    navigation: [
+      { name: 'Home', href: '/' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Our Services', href: '/services' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Investor Charter', href: '/investor' },
     ],
-    services: [
-      { name: 'Equity Cash', href: '#services' },
-      { name: 'Equity Derivatives', href: '#services' },
-      { name: 'Index Options', href: '#services' },
-      { name: 'Nifty Futures', href: '#services' },
-      { name: 'Premium Advisory', href: '#services' },
+    legal: [
+      { name: 'Terms & Conditions', href: '/terms' },
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Refund Policy', href: '/refund' },
+      { name: 'AML Policy', href: '/aml' },
+      { name: 'Disclaimer', href: '/disclaimer' },
     ]
   };
 
@@ -71,30 +73,30 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black text-blue-500 uppercase tracking-[0.2em] mb-6">Navigation</h4>
+            <h4 className="text-[11px] font-black text-blue-500 uppercase tracking-[0.2em] mb-6">Explore</h4>
             <ul className="space-y-4">
-              {footerLinks.quickLinks.map((link, i) => (
+              {footerLinks.navigation.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-slate-400 text-sm font-bold hover:text-white transition-colors flex items-center group">
+                  <Link to={link.href} className="text-slate-400 text-sm font-bold hover:text-white transition-colors flex items-center group">
                     {link.name}
                     <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Legal Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black text-blue-500 uppercase tracking-[0.2em] mb-6">Services</h4>
+            <h4 className="text-[11px] font-black text-blue-500 uppercase tracking-[0.2em] mb-6">Legal</h4>
             <ul className="space-y-4">
-              {footerLinks.services.map((link, i) => (
+              {footerLinks.legal.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-slate-400 text-sm font-bold hover:text-white transition-colors flex items-center group">
+                  <Link to={link.href} className="text-slate-400 text-sm font-bold hover:text-white transition-colors flex items-center group">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -106,17 +108,21 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500"><Phone size={18} /></div>
-                <p className="text-sm font-bold text-slate-300">+91 98765 43210</p>
+                <p className="text-sm font-bold text-slate-300">+91 98272 16004</p>
               </div>
               <div className="flex items-center gap-4">
                 <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500"><Mail size={18} /></div>
-                <p className="text-sm font-bold text-slate-300">support@highrise.com</p>
+                <p className="text-sm font-bold text-slate-300">support@highriseresearch.com</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500 shrink-0"><MapPin size={18} /></div>
+                <p className="text-sm font-bold text-slate-300">A-172 Kanak Avenue Colony,<br/>lasudiya Mori Indore</p>
               </div>
               <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-3">
                 <ShieldCheck className="text-emerald-500" size={24} />
                 <div>
                   <p className="text-[10px] font-black text-slate-500 uppercase">SEBI Registration</p>
-                  <p className="text-[12px] font-mono font-bold text-white">INH000009427</p>
+                  <p className="text-[12px] font-mono font-bold text-white">INH000000000</p>
                 </div>
               </div>
             </div>
@@ -131,11 +137,6 @@ const Footer = () => {
           <p className="text-slate-500 text-xs font-medium">
             © {currentYear} HighRise Research. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-slate-500 text-xs hover:text-white transition-colors underline underline-offset-4 decoration-slate-800">Privacy Policy</a>
-            <a href="#" className="text-slate-500 text-xs hover:text-white transition-colors underline underline-offset-4 decoration-slate-800">Terms of Service</a>
-            <a href="#" className="text-slate-500 text-xs hover:text-white transition-colors underline underline-offset-4 decoration-slate-800">Refund Policy</a>
-          </div>
         </div>
 
         {/* Legal Disclaimer Box */}

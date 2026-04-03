@@ -9,9 +9,16 @@ import ScrollToTop from "./Components/BackToTop";
 import Preloader from "./Components/Preloader";
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
-import Gallery from "./pages/Gallery.jsx";
+import ServiceDetail from "./pages/ServiceDetail.jsx";
 import Contact from "./pages/Contact.jsx";
+import Admin from "./pages/Admin.jsx";
 import NotFound from "./Components/Notfound.jsx";
+import InvestorCharter from "./pages/InvestorCharter.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import TermsAndConditions from "./pages/Terms.jsx";
+import RefundPolicy from "./pages/Refund.jsx";
+import AMLPolicy from "./pages/AmlPolicy.jsx";
+import Disclaimer from "./pages/Disclamer.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -35,10 +42,17 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/services/:id" element={<ServiceDetail />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/investor" element={<InvestorCharter />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/refund" element={<RefundPolicy />} />
+        <Route path="/aml" element={<AMLPolicy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

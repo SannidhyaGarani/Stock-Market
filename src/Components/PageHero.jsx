@@ -9,7 +9,7 @@ const PageHero = ({ title, subtitle, backgroundImage, className = '' }) => {
   }, []);
 
   return (
-    <section className={`relative h-[50vh] md:h-[60vh] w-full bg-[#0c0a09] overflow-hidden ${className}`}>
+    <section className={`relative h-[50vh] md:h-[60vh] w-full bg-[#0c0a09] overflow-hidden mt-30 ${className}`}>
       {/* --- Cinematic Background --- */}
       <div className="absolute inset-0 z-0">
         <div 

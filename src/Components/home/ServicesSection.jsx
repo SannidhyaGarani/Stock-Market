@@ -1,18 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../Firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { 
+  ArrowUpRight, 
+  ExternalLink, 
+  Layers, 
   Coins, 
   TrendingUp, 
   Target, 
-  Layers, 
   Zap, 
-  ArrowUpRight,
-  ExternalLink 
+  BarChart3, 
+  PieChart, 
+  Activity, 
+  Briefcase, 
+  LineChart,
+  Wallet
 } from 'lucide-react';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+
+// --- Icon Mapping Helper ---
+const getServiceIcon = (title) => {
+  const t = title.toLowerCase();
+  if (t.includes('cash') || t.includes('equity')) {
+    if (t.includes('option')) return <Target size={28} />;
+    if (t.includes('future')) return <TrendingUp size={28} />;
+    return <Coins size={28} />;
+  }
+  if (t.includes('index')) {
+    if (t.includes('option')) return <Zap size={28} />;
+    if (t.includes('future')) return <Layers size={28} />;
+    return <BarChart3 size={28} />;
+  }
+  if (t.includes('portfolio') || t.includes('wealth')) return <Briefcase size={28} />;
+  if (t.includes('analysis') || t.includes('research')) return <LineChart size={28} />;
+  if (t.includes('crypto')) return <Wallet size={28} />;
+  if (t.includes('trading') || t.includes('market')) return <Activity size={28} />;
+  
+  // Default icon
+  return <PieChart size={28} />;
+};
 
 // --- Sub-Component: Spotlight Card ---
-// This creates the "light following the mouse" effect
 const ServiceCard = ({ service, index }) => {
+  const navigate = useNavigate();
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -25,11 +56,12 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       onMouseMove={handleMouseMove}
+      onClick={() => navigate(`/services/${service.id}`)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
       viewport={{ once: true }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer"
     >
       {/* Interactive Spotlight Background */}
       <motion.div
@@ -49,10 +81,10 @@ const ServiceCard = ({ service, index }) => {
         {/* Icon Header */}
         <div className="flex items-start justify-between">
           <motion.div 
-            className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} text-white shadow-lg`}
+            className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white shadow-lg`}
             whileHover={{ scale: 1.1, rotate: -5 }}
           >
-            {React.cloneElement(service.icon, { size: 28 })}
+            {getServiceIcon(service.title)}
           </motion.div>
           <motion.div 
             className="rounded-full border border-slate-100 p-2 text-slate-400 group-hover:text-blue-600 transition-colors"
@@ -68,7 +100,7 @@ const ServiceCard = ({ service, index }) => {
             {service.title}
           </h4>
           <p className="mt-4 text-slate-500 leading-relaxed font-medium">
-            {service.desc}
+            {service.shortDesc}
           </p>
         </div>
       </div>
@@ -85,38 +117,15 @@ const ServiceCard = ({ service, index }) => {
 };
 
 const Services = () => {
-  const serviceList = [
-    {
-      title: "Equity Cash",
-      desc: "High-conviction intraday and delivery setups for blue-chip and mid-cap stocks.",
-      icon: <Coins />,
-      gradient: "from-blue-500 to-cyan-400"
-    },
-    {
-      title: "Equity Future",
-      desc: "Leveraged trading strategies designed for high-momentum equity derivatives.",
-      icon: <TrendingUp />,
-      gradient: "from-indigo-600 to-blue-500"
-    },
-    {
-      title: "Equity Option",
-      desc: "Precision Call & Put recommendations with strictly defined stop-loss and targets.",
-      icon: <Target />,
-      gradient: "from-purple-600 to-indigo-500"
-    },
-    {
-      title: "Index Future",
-      desc: "Expert direction on Nifty and Bank Nifty futures based on institutional flow.",
-      icon: <Layers />,
-      gradient: "from-blue-600 to-indigo-600"
-    },
-    {
-      title: "Index Option",
-      desc: "Specialized Nifty and Bank Nifty expiry strategies and hero-or-zero setups.",
-      icon: <Zap />,
-      gradient: "from-amber-400 to-orange-500"
-    }
-  ];
+  const [serviceList, setServiceList] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      const querySnapshot = await getDocs(collection(db, "services"));
+      setServiceList(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    };
+    fetchServices();
+  }, []);
 
   return (
     <section id="services" className="py-24 bg-[#F8FAFC] relative overflow-hidden">

@@ -1,85 +1,96 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Hammer, Map } from 'lucide-react';
+import { ArrowLeft, Home, Compass, AlertCircle } from 'lucide-react';
 
 const NotFound = () => {
-  const brandBlue = '#B87333';
-  const deepNavy = '#0a0f1a';
-
   return (
-    <div className="min-h-screen bg-[#05070a] text-white flex flex-col justify-center items-center relative overflow-hidden px-6">
+    <div className="min-h-screen bg-[#020617] text-white flex flex-col justify-center items-center relative overflow-hidden px-6">
       
-      {/* Background Architectural Grid (Consistent with Preloader/Footer) */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-           style={{ 
-             backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`, 
-             backgroundSize: '60px 60px' 
-           }} />
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
 
-      {/* Large Decorative "404" Blueprint */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <h1 className="text-[20rem] md:text-[35rem] font-serif italic text-white/[0.02] leading-none">
+      {/* Background Animated Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+
+      {/* Large Decorative "404" */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] select-none pointer-events-none opacity-[0.03]">
+        <h1 className="text-[25rem] md:text-[40rem] font-black leading-none tracking-tight">
           404
         </h1>
       </div>
 
       <div className="relative z-10 text-center max-w-2xl">
-        {/* Animated Icon */}
-        <div className="mb-8 flex justify-center">
-            <div className="p-5 rounded-full border border-[#B87333]/30 bg-[#B87333]/5 animate-pulse">
-                <Hammer size={40} className="text-[#B87333]" strokeWidth={1} />
+        {/* Error Icon */}
+        <div className="mb-10 flex justify-center">
+            <div className="p-6 rounded-[2rem] bg-blue-600/10 border border-blue-500/20 shadow-2xl shadow-blue-500/5 transition-transform hover:scale-110 duration-500">
+                <AlertCircle size={56} className="text-blue-500" strokeWidth={1.5} />
             </div>
         </div>
 
-        <span className="text-[11px] uppercase tracking-[0.8em] text-[#B87333] font-bold block mb-4">
-            Error Code: Structural Gap
+        <span className="text-[12px] uppercase tracking-[0.8em] text-blue-500 font-black block mb-6">
+            Error: Page Out of Range
         </span>
         
-        <h2 className="text-5xl md:text-7xl font-light tracking-tight mb-6">
-            Foundation <span className="italic font-serif text-slate-500">Not Found</span>
+        <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-8 bg-gradient-to-b from-white to-slate-500 bg-clip-text text-transparent">
+            Market <span className="text-blue-500 italic">Halt</span>.
         </h2>
         
-        <p className="text-slate-400 text-sm md:text-base leading-relaxed font-light mb-12 max-w-md mx-auto">
-            The project or page you are looking for hasn't been drafted yet, or the site plan has been revised. Let's get you back to solid ground.
+        <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-medium mb-16 max-w-lg mx-auto">
+            The data you are looking for has been moved or delisted. Let's redirect you to a more stable index.
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link 
             to="/" 
-            className="group flex items-center gap-3 bg-[#B87333] text-white px-8 py-4 text-[12px] uppercase tracking-widest font-bold transition-all duration-500 hover:bg-[#1a335a] shadow-[0_10px_30px_rgba(37,71,122,0.2)]"
+            className="group flex items-center gap-4 bg-blue-600 text-white px-10 py-5 rounded-2xl text-sm font-black transition-all duration-500 hover:bg-blue-700 hover:shadow-[0_20px_40px_rgba(37,99,235,0.3)] active:scale-[0.98]"
           >
-            <Home size={16} className="transition-transform group-hover:-translate-y-1" />
-            Return to Home
+            <Home size={18} className="transition-transform group-hover:-translate-y-1" />
+            Back to Dashboard
           </Link>
           
           <Link 
             to="/contact" 
-            className="group flex items-center gap-3 border border-white/10 px-8 py-4 text-[12px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all duration-500"
+            className="group flex items-center gap-4 bg-white/5 border border-white/10 px-10 py-5 rounded-2xl text-sm font-black hover:bg-white hover:text-black transition-all duration-500 active:scale-[0.98]"
           >
-            <Map size={16} />
-            Consult Site Map
+            <Compass size={18} className="transition-transform group-hover:rotate-180 duration-700" />
+            Contact Support
           </Link>
         </div>
 
-        {/* Quick Links for Luxury UX */}
-        <div className="mt-20 pt-10 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-4">
-            {['Projects', 'Services', 'About Us', 'Contact'].map((item) => (
-                <Link 
-                    key={item}
-                    to={`/${item.toLowerCase().replace(' ', '')}`}
-                    className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-[#B87333] transition-colors"
-                >
-                    {item}
-                </Link>
-            ))}
+        {/* Navigation Map */}
+        <div className="mt-24 pt-10 border-t border-white/10">
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-6">
+                {[
+                    { name: 'Home', path: '/' },
+                    { name: 'About', path: '/about' },
+                    { name: 'Services', path: '/services' },
+                    { name: 'Contact', path: '/contact' }
+                ].map((item) => (
+                    <Link 
+                        key={item.name}
+                        to={item.path}
+                        className="text-[11px] uppercase tracking-[0.3em] font-black text-slate-500 hover:text-white transition-colors flex items-center group"
+                    >
+                        {item.name}
+                        <ArrowLeft size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-all rotate-180" />
+                    </Link>
+                ))}
+            </div>
         </div>
       </div>
 
-      {/* Bottom Branding */}
-      <div className="absolute bottom-10 left-10 hidden md:block">
-        <p className="text-[9px] tracking-[0.5em] text-white/10 uppercase vertical-text">
-            HighRise Research & Developers
+      {/* Lateral Branding */}
+      <div className="absolute bottom-12 left-12 hidden lg:block overflow-hidden h-32">
+        <p className="text-[10px] tracking-[0.8em] text-white/5 uppercase vertical-text font-black select-none">
+            HighRise Research Systems
+        </p>
+      </div>
+
+      <div className="absolute top-12 right-12 hidden lg:block overflow-hidden h-32">
+        <p className="text-[10px] tracking-[0.8em] text-white/5 uppercase vertical-text-inv font-black select-none">
+            Precision Intelligence
         </p>
       </div>
     </div>
@@ -92,6 +103,9 @@ styleSheet.innerText = `
   .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+  }
+  .vertical-text-inv {
+    writing-mode: vertical-rl;
   }
 `;
 document.head.appendChild(styleSheet);

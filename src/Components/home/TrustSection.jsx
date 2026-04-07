@@ -106,8 +106,8 @@ const WhyChooseUs = () => {
     {
       icon: Target,
       color: "text-blue-600",
-      title: "92% Accuracy",
-      desc: "High-conviction calls backed by data-driven research.",
+      title: "High Conviction",
+      desc: "Institutional-grade research focused on risk-reward excellence.",
       size: "lg:col-span-4",
     },
     {

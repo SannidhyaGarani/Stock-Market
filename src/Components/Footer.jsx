@@ -53,7 +53,7 @@ const Footer = () => {
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm font-medium">
               India's leading SEBI Registered Research Analyst firm providing institutional-grade 
-              market insights and high-accuracy trading calls for retail investors.
+              market insights and precision-driven trading calls for retail investors.
             </p>
             <div className="flex gap-4">
               {[
@@ -122,7 +122,7 @@ const Footer = () => {
                 <ShieldCheck className="text-emerald-500" size={24} />
                 <div>
                   <p className="text-[10px] font-black text-slate-500 uppercase">SEBI Registration</p>
-                  <p className="text-[12px] font-mono font-bold text-white">INH000000000</p>
+                  <p className="text-[12px] font-mono font-bold text-white">INH000009427</p>
                 </div>
               </div>
             </div>

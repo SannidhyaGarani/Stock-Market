@@ -104,7 +104,7 @@ const Hero = () => {
               className="text-lg text-slate-600 max-w-lg font-medium leading-relaxed"
               variants={itemVariants}
             >
-              Institutional-grade equity and index research by <strong>Pavan Raghuvanshi</strong>.
+              Institutional-grade equity and index research by <strong>HighRise Research</strong>.
               Data-backed calls designed for consistent market alpha.
             </motion.p>
 
@@ -203,20 +203,25 @@ const Hero = () => {
                   </motion.p>
                 </div>
               </div>
-              <div className="space-y-4">
-                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full w-[85%] bg-blue-600 rounded-full"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '85%' }}
-                    transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+              <div className="space-y-3">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Recent Research Wins</p>
+                {[
+                  { label: 'BankNifty Options', profit: '+120 Pts', color: 'text-emerald-600', bg: 'bg-emerald-50' },
+                  { label: 'Equity Cash', profit: '+8.4%', color: 'text-blue-600', bg: 'bg-blue-50' },
+                  { label: 'Nifty Expiry Special', profit: '+45 Pts', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+                ].map((item, idx) => (
+                  <motion.div 
+                    key={idx} 
+                    className="flex items-center justify-between p-3 rounded-2xl bg-slate-50/50 border border-slate-100/50 hover:bg-white transition-colors"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + (idx * 0.1) }}
                     viewport={{ once: true }}
-                  />
-                </div>
-                <div className="flex justify-between text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                  <span>Accuracy Rate</span>
-                  <span className="text-slate-900">92% Verified</span>
-                </div>
+                  >
+                    <span className="text-[11px] font-bold text-slate-600">{item.label}</span>
+                    <span className={`text-[10px] font-black ${item.color} ${item.bg} px-2 py-1 rounded-lg`}>{item.profit}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 

@@ -8,7 +8,7 @@ const Testimonials = () => {
       name: "Arjun Mehta",
       role: "Portfolio Investor",
       img: "https://i.pravatar.cc/150?u=arjun",
-      text: "The Index Option calls are incredibly precise. I've been following Pavan's research for 2 years, and the risk management is top-notch.",
+      text: "The Index Option calls are incredibly precise. I've been following HighRise's research for 2 years, and the risk management is top-notch.",
       rating: 5
     },
     {
@@ -22,7 +22,7 @@ const Testimonials = () => {
       name: "Rahul Verma",
       role: "Equity Trader",
       img: "https://i.pravatar.cc/150?u=rahul",
-      text: "Highly transparent service. Unlike others, they are honest about stop-losses, and their winning ratio is genuinely around 90%.",
+      text: "Highly transparent service. Unlike others, they are honest about stop-losses, and their risk-reward management is genuinely institutional-grade.",
       rating: 5
     }
   ];

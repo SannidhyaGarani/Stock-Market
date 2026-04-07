@@ -8,20 +8,20 @@ const Stats = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1.0], // Premium cubic bezier
       },
     },
   };
@@ -33,6 +33,7 @@ const Stats = () => {
       label: "Market Experience",
       color: "text-blue-600",
       bg: "bg-blue-50",
+      glow: "group-hover:shadow-blue-500/10",
     },
     {
       icon: Users,
@@ -40,6 +41,7 @@ const Stats = () => {
       label: "Active Clients",
       color: "text-indigo-600",
       bg: "bg-indigo-50",
+      glow: "group-hover:shadow-indigo-500/10",
     },
     {
       icon: ShieldCheck,
@@ -47,28 +49,31 @@ const Stats = () => {
       label: "INH000009427",
       color: "text-emerald-600",
       bg: "bg-emerald-50",
+      glow: "group-hover:shadow-emerald-500/10",
     },
     {
-      icon: TrendingUp,
-      value: "92%",
-      label: "Accuracy Rate",
-      color: "text-blue-500",
+      icon: ShieldCheck,
+      value: "NISM Cert.",
+      label: "Research Series XV",
+      color: "text-sky-600",
       bg: "bg-sky-50",
+      glow: "group-hover:shadow-sky-500/10",
     },
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.08),_transparent_70%)] -z-10"></div>
+    <section className="pt-16 md:py-15 bg-[#fafafa] relative overflow-hidden">
+      {/* Background Premium Glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {statsData.map((stat, index) => {
             const Icon = stat.icon;
@@ -77,30 +82,36 @@ const Stats = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className="group relative p-8 rounded-[2rem] bg-white/60 border border-slate-100 backdrop-blur-md shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(59,130,246,0.15)] transition-all duration-300"
+                whileHover={{ y: -5 }}
+                className={`group relative p-5 md:p-8 rounded-2xl md:rounded-[2rem] bg-white border border-slate-100 hover:border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_12px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] ${stat.glow} transition-all duration-500 ease-out flex flex-col justify-between h-full`}
               >
-                {/* Icon */}
-                <motion.div
-                  className={`w-14 h-14 ${stat.bg} ${stat.color} rounded-2xl flex items-center justify-center mb-6`}
-                  whileHover={{ rotate: 6, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <Icon size={28} />
-                </motion.div>
+                {/* Subtle top-light gradient effect on hover */}
+                <div className="absolute inset-0 rounded-2xl md:rounded-[2rem] bg-gradient-to-br from-white via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Value */}
-                <h3 className="text-3xl font-black text-slate-900 mb-1">
-                  {stat.value}
-                </h3>
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    {/* Icon Container with Glassmorphic touch */}
+                    <div
+                      className={`w-10 h-10 md:w-14 md:h-14 ${stat.bg} ${stat.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-sm`}
+                    >
+                      <Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
+                    </div>
 
-                {/* Label */}
-                <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">
-                  {stat.label}
-                </p>
+                    {/* Value */}
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                      {stat.value}
+                    </h3>
+                  </div>
 
-                {/* Bottom Glow Bar */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-blue-600 rounded-full transition-all duration-500 group-hover:w-1/3"></div>
+                  {/* Label */}
+                  <p className="mt-1 md:mt-2 text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">
+                    {stat.label}
+                  </p>
+                </div>
+
+                {/* Corner accent border line on hover */}
+                <div className="absolute top-0 right-0 w-0 h-[1px] bg-gradient-to-r from-transparent to-slate-200 transition-all duration-500 group-hover:w-full rounded-tr-2rem" />
+                <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-l from-transparent to-slate-200 transition-all duration-500 group-hover:w-full rounded-bl-2rem" />
               </motion.div>
             );
           })}

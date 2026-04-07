@@ -57,7 +57,7 @@ const About = () => {
             <div className="relative aspect-square sm:aspect-video lg:aspect-square overflow-hidden rounded-[3rem] border-[12px] border-white shadow-2xl">
               <motion.img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
-                alt="Pavan Raghuvanshi - HighRise Research"
+                alt="HighRise Research - Expert Analysis"
                 className="w-full h-full object-cover grayscale-[20%]"
                 whileHover={{ grayscale: 0, scale: 1.05 }}
                 transition={{ duration: 0.7 }}
@@ -71,7 +71,7 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 <p className="text-xs font-black text-blue-600 uppercase tracking-widest mb-1">Lead Research Analyst</p>
-                <h4 className="text-xl font-bold text-slate-900">Pavan Raghuvanshi</h4>
+                <h4 className="text-xl font-bold text-slate-900">HighRise Research</h4>
               </motion.div>
             </div>
           </motion.div>
@@ -104,7 +104,7 @@ const About = () => {
               className="text-lg text-slate-600 mb-10 leading-relaxed font-medium"
               variants={itemVariants}
             >
-              HighRise Research, led by SEBI Registered Research Analyst <span className="text-slate-900 font-bold underline decoration-blue-200 underline-offset-4">Pavan Raghuvanshi</span>,
+              HighRise Research, led by SEBI Registered Research Analyst <span className="text-slate-900 font-bold underline decoration-blue-200 underline-offset-4">Our Principal Expert</span>,
               was founded on the principles of transparency and precision. We bridge the gap between complex market data and actionable investment strategies.
             </motion.p>
 

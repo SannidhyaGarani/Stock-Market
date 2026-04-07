@@ -233,11 +233,35 @@ const InvestorCharter = () => {
 
           </div>
 
-          <div className="mt-12 p-6 bg-white border border-slate-100 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-600 font-medium">Physical complaints can be dispatched straight to the Office of Investor Assistance at <span className="text-slate-900 font-bold">SEBI Bhavan, BKC, Mumbai.</span></p>
-            <button className="px-6 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-full uppercase tracking-wider hover:bg-blue-600 transition-colors flex-shrink-0">
-              View Address
-            </button>
+          <div className="mt-12 p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div className="max-w-2xl">
+              <h4 className="text-xl font-black text-slate-900 mb-2">SEBI Regulator Office</h4>
+              <p className="text-sm text-slate-500 font-medium leading-relaxed mb-4">
+                Physical complaints can be dispatched straight to the Office of Investor Assistance at the SEBI Bhavan.
+              </p>
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100 space-y-4">
+                <div className="flex gap-4 items-start">
+                   <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0"><MapPin size={18} className="text-blue-600" /></div>
+                   <p className="text-xs font-bold text-slate-700 leading-relaxed uppercase">
+                    SEBI Bhavan BKC Address : Plot No.C4-A, 'G' Block Bandra-Kurla Complex, Bandra (East), Mumbai - 400051, Maharashtra
+                   </p>
+                </div>
+                <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-slate-200">
+                   <div className="flex items-center gap-2">
+                     <Phone size={14} className="text-blue-500" />
+                     <span className="text-[10px] font-black text-slate-500 tracking-wider">+91-22-26449000</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <Mail size={14} className="text-blue-500" />
+                     <span className="text-[10px] font-black text-slate-500 tracking-wider uppercase">sebi@sebi.gov.in</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <Shield size={14} className="text-emerald-500" />
+                     <span className="text-[10px] font-black text-slate-900 tracking-wider">HELPLINE: 1800 22 7575</span>
+                   </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

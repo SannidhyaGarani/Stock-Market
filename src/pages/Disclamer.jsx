@@ -53,7 +53,10 @@ const Disclaimer = () => {
               <h4 className="text-2xl font-bold mb-4">HighRise Research</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
-                  We are SEBI registered as a Research Entity under SEBI (Research Analyst) Regulations, 2014. <span className="text-white font-bold">SEBI Research Analyst No: INH000000000</span>.
+                  We are SEBI registered as a Research Entity under SEBI (Research Analyst) Regulations, 2014. <span className="text-white font-bold">SEBI Research Analyst No: INH000009427</span>.
+                </p>
+                <p>
+                  We are also enlisted with BSE under the <span className="text-white font-bold">BSE Enlistment No: 5543</span>.
                 </p>
                 <p>
                   The entity or its associates have not been debarred/suspended by SEBI or any other regulatory authority for accessing/dealing in securities Market.
@@ -159,9 +162,15 @@ const Disclaimer = () => {
                     <Scale className="text-blue-600" size={24} />
                     <h4 className="text-2xl font-black text-slate-900">Jurisdiction & Arbitration</h4>
                   </div>
-                  <div className="space-y-2 text-sm text-slate-600 font-medium">
+                  <div className="space-y-4 text-sm text-slate-600 font-medium">
                     <p>We consider ourselves and intend to be subject strictly to the jurisdiction only of the courts of <span className="font-bold text-slate-900">Indore, Madhya Pradesh, India</span>.</p>
                     <p className="mt-4 text-xs font-bold text-slate-400">REGISTERED OFFICE: A-172 Kanak Avenue Colony, lasudiya Mori Indore</p>
+                    <div className="mt-6 pt-6 border-t border-slate-200">
+                      <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-2">Regulatory Authority</p>
+                      <p className="text-[11px] text-slate-500 leading-relaxed font-bold">
+                        SEBI Office Details : SEBI Bhavan BKC Address : Plot No.C4-A, 'G' Block Bandra-Kurla Complex, Bandra (East), Mumbai - 400051, Maharashtra | Tel : +91-22-26449000 / 40459000 | Fax : +91-22-26449019-22 / 40459019-22 Email: sebi@sebi.gov.in | Toll Free Investor Helpline: 1800 22 7575
+                      </p>
+                    </div>
                   </div>
                 </div>
                 

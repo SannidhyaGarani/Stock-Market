@@ -122,7 +122,10 @@ const Services = () => {
   useEffect(() => {
     const fetchServices = async () => {
       const querySnapshot = await getDocs(collection(db, "services"));
-      setServiceList(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      // Sort by indexNumber
+      servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
+      setServiceList(servicesData);
     };
     fetchServices();
   }, []);

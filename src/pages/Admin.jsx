@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, serverTimestamp, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../Firebase";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, X, Upload, CheckCircle2, Loader2, Trash2, ShieldAlert } from "lucide-react";
+import { Plus, X, Upload, CheckCircle2, Loader2, Trash2, ShieldAlert, Edit2 } from "lucide-react";
 import PageHero from "../Components/PageHero";
 
 const Admin = () => {
@@ -17,6 +17,8 @@ const Admin = () => {
   const [shortDesc, setShortDesc] = useState("");
   const [fullDesc, setFullDesc] = useState("");
   const [features, setFeatures] = useState([""]);
+  const [indexNumber, setIndexNumber] = useState("");
+  const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
     fetchServices();
@@ -27,12 +29,33 @@ const Admin = () => {
     try {
       const querySnapshot = await getDocs(collection(db, "services"));
       const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      // Sort by indexNumber if it exists
+      servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
       setServices(servicesData);
     } catch (error) {
       console.error("Error fetching services:", error);
     } finally {
       setIsFetching(false);
     }
+  };
+
+  const handleEdit = (service) => {
+    setEditingId(service.id);
+    setTitle(service.title);
+    setShortDesc(service.shortDesc);
+    setFullDesc(service.fullDesc);
+    setFeatures(service.features && service.features.length > 0 ? service.features : [""]);
+    setIndexNumber(service.indexNumber || "");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const resetForm = () => {
+    setEditingId(null);
+    setTitle("");
+    setShortDesc("");
+    setFullDesc("");
+    setFeatures([""]);
+    setIndexNumber("");
   };
 
   const handleDelete = async (id) => {
@@ -72,28 +95,34 @@ const Admin = () => {
       // 1. Filter empty features
       const validFeatures = features.filter(f => f.trim() !== "");
 
-      // 2. Save to Firestore
-      await addDoc(collection(db, "services"), {
+      const serviceData = {
         title,
         shortDesc,
         fullDesc,
         features: validFeatures,
-        createdAt: serverTimestamp(),
-      });
+        indexNumber: indexNumber ? Number(indexNumber) : 0,
+        updatedAt: serverTimestamp(),
+      };
+
+      if (editingId) {
+        // Update existing
+        await updateDoc(doc(db, "services", editingId), serviceData);
+      } else {
+        // Add new
+        await addDoc(collection(db, "services"), {
+          ...serviceData,
+          createdAt: serverTimestamp(),
+        });
+      }
 
       setSuccess(true);
       fetchServices();
-      
-      // Reset Form
-      setTitle("");
-      setShortDesc("");
-      setFullDesc("");
-      setFeatures([""]);
+      resetForm();
       
       setTimeout(() => setSuccess(false), 3000);
     } catch (error) {
-      console.error("Error adding service: ", error);
-      alert("Failed to upload service. " + error.message);
+      console.error("Error saving service: ", error);
+      alert("Failed to save service. " + error.message);
     } finally {
       setLoading(false);
     }
@@ -120,8 +149,19 @@ const Admin = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-100 relative overflow-hidden"
             >
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                <Plus className="text-blue-600" /> Add New Service
+              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  {editingId ? <Edit2 className="text-blue-600" /> : <Plus className="text-blue-600" />}
+                  {editingId ? "Edit Service" : "Add New Service"}
+                </span>
+                {editingId && (
+                  <button 
+                    onClick={resetForm}
+                    className="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1 font-medium transition-colors"
+                  >
+                    <X size={14} /> Cancel Edit
+                  </button>
+                )}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -138,15 +178,26 @@ const Admin = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Short Description</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Index Number (Order)</label>
                     <input 
-                      type="text" 
-                      value={shortDesc}
-                      onChange={(e) => setShortDesc(e.target.value)}
+                      type="number" 
+                      value={indexNumber}
+                      onChange={(e) => setIndexNumber(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-                      placeholder="Brief summary for cards..."
+                      placeholder="e.g. 1"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">Short Description</label>
+                  <input 
+                    type="text" 
+                    value={shortDesc}
+                    onChange={(e) => setShortDesc(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+                    placeholder="Brief summary for cards..."
+                  />
                 </div>
 
                 <div>
@@ -207,7 +258,7 @@ const Admin = () => {
                     disabled={loading}
                     className="w-full py-4 rounded-xl bg-slate-900 text-white font-bold text-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {loading ? <Loader2 className="animate-spin" /> : "Publish Service"}
+                    {loading ? <Loader2 className="animate-spin" /> : editingId ? "Update Service" : "Publish Service"}
                   </button>
                   <AnimatePresence>
                     {success && (
@@ -257,13 +308,20 @@ const Admin = () => {
                       <h4 className="font-bold text-slate-900 leading-tight mb-1">{service.title}</h4>
                       <p className="text-xs text-slate-500 line-clamp-2">{service.shortDesc}</p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-1">
+                      <button 
+                        onClick={() => handleEdit(service)}
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        title="Edit Service"
+                      >
+                        <Edit2 size={16} />
+                      </button>
                       <button 
                         onClick={() => handleDelete(service.id)}
-                        className="w-10 h-10 rounded-full flex items-center justify-center text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-red-300 hover:bg-red-50 hover:text-red-500 transition-colors"
                         title="Delete Service"
                       >
-                        <Trash2 size={18} />
+                        <Trash2 size={16} />
                       </button>
                     </div>
                   </motion.div>

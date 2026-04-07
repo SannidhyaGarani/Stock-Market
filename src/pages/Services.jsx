@@ -15,6 +15,8 @@ const Services = () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'services'));
         const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        // Sort by indexNumber
+        servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
         setServices(servicesData);
       } catch (error) {
         console.error("Error fetching services:", error);

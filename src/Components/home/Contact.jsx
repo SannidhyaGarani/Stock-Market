@@ -29,12 +29,12 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-white relative overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-blue-50/50 blur-[120px] rounded-full -z-10"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Left Side: Contact Info & Map Placeholder */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-5 space-y-12"
             variants={containerVariants}
             initial="hidden"
@@ -54,7 +54,7 @@ const Contact = () => {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="space-y-6"
               variants={containerVariants}
               initial="hidden"
@@ -62,17 +62,17 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               {[
-                { icon: <Phone size={20} />, label: "Call Us", value: "+91 98765 43210", color: "text-blue-600", bg: "bg-blue-50" },
-                { icon: <Mail size={20} />, label: "Email Support", value: "info@highriseresearch.com", color: "text-indigo-600", bg: "bg-indigo-50" },
-                { icon: <MapPin size={20} />, label: "Our Office", value: "Level 4, Financial District, Mumbai, India", color: "text-emerald-600", bg: "bg-emerald-50" },
+                { icon: <Phone size={20} />, label: "Call Us", value: "+91 90986 93674", color: "text-blue-600", bg: "bg-blue-50" },
+                { icon: <Mail size={20} />, label: "Email Support", value: "pavanraghuvanshi2014@gmail.com", color: "text-indigo-600", bg: "bg-indigo-50" },
+                { icon: <MapPin size={20} />, label: "Our Office", value: "A-172 Kanak Avenue Colony, lasudiya Mori Indore", color: "text-emerald-600", bg: "bg-emerald-50" },
               ].map((item, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   className="flex items-center gap-5 group cursor-pointer"
                   variants={itemVariants}
                   whileHover={{ x: 8 }}
                 >
-                  <motion.div 
+                  <motion.div
                     className={`w-12 h-12 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shadow-sm`}
                     whileHover={{ scale: 1.1, rotate: 6 }}
                     transition={{ type: 'spring', stiffness: 400 }}
@@ -88,12 +88,12 @@ const Contact = () => {
             </motion.div>
 
             {/* Map Placeholder */}
-            <motion.div 
+            <motion.div
               className="relative h-48 w-full rounded-[2rem] bg-slate-100 overflow-hidden border border-slate-200 group"
               variants={itemVariants}
               whileHover={{ y: -4 }}
             >
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/72.8777,19.0760,12,0/600x400?access_token=YOUR_TOKEN')] bg-cover bg-center grayscale opacity-60"
                 whileHover={{ grayscale: 0, scale: 1.1 }}
                 transition={{ duration: 1 }}
@@ -107,14 +107,14 @@ const Contact = () => {
           </motion.div>
 
           {/* Right Side: Modern Contact Form */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-7"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <motion.div 
+            <motion.div
               className="relative p-1 md:p-10 lg:p-12 rounded-[3rem] bg-white border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.06)]"
               whileHover={{ y: -8 }}
               transition={{ type: 'spring', stiffness: 300 }}
@@ -122,7 +122,7 @@ const Contact = () => {
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name Input */}
-                  <motion.div 
+                  <motion.div
                     className="space-y-2"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -130,8 +130,8 @@ const Contact = () => {
                     viewport={{ once: true }}
                   >
                     <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
-                    <motion.input 
-                      type="text" 
+                    <motion.input
+                      type="text"
                       placeholder="John Doe"
                       onFocus={() => setActiveField('name')}
                       onBlur={() => setActiveField(null)}
@@ -140,7 +140,7 @@ const Contact = () => {
                     />
                   </motion.div>
                   {/* Email Input */}
-                  <motion.div 
+                  <motion.div
                     className="space-y-2"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -148,8 +148,8 @@ const Contact = () => {
                     viewport={{ once: true }}
                   >
                     <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
-                    <motion.input 
-                      type="email" 
+                    <motion.input
+                      type="email"
                       placeholder="john@example.com"
                       onFocus={() => setActiveField('email')}
                       onBlur={() => setActiveField(null)}
@@ -160,7 +160,7 @@ const Contact = () => {
                 </div>
 
                 {/* Subject / Message Input */}
-                <motion.div 
+                <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -168,7 +168,7 @@ const Contact = () => {
                   viewport={{ once: true }}
                 >
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Your Message</label>
-                  <motion.textarea 
+                  <motion.textarea
                     rows="5"
                     placeholder="How can our research help you?"
                     onFocus={() => setActiveField('msg')}
@@ -178,7 +178,7 @@ const Contact = () => {
                   ></motion.textarea>
                 </motion.div>
 
-                <motion.button 
+                <motion.button
                   className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 group"
                   whileHover={{ backgroundColor: '#2563eb', boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3)' }}
                   whileTap={{ scale: 0.98 }}
@@ -192,7 +192,7 @@ const Contact = () => {
                   </motion.div>
                 </motion.button>
 
-                <motion.p 
+                <motion.p
                   className="text-center text-[11px] text-slate-400 font-medium"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -204,7 +204,7 @@ const Contact = () => {
               </form>
 
               {/* Decorative Icon */}
-              <motion.div 
+              <motion.div
                 className="absolute -top-6 -right-6 w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}

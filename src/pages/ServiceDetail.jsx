@@ -44,7 +44,7 @@ const ServiceDetail = () => {
        <PageHero
         title={service.title}
         subtitle={service.shortDesc}
-        backgroundImage="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        backgroundImage="https://plus.unsplash.com/premium_photo-1681487767138-ddf2d67b35c1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div 

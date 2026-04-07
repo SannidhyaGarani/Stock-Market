@@ -15,10 +15,11 @@ const PaymentSection = () => {
   const [copied, setCopied] = useState(null);
 
   const bankDetails = {
-    accountName: "HighRise Research",
-    accountNumber: "921020045568210",
-    ifsc: "UTIB0000124",
-    bankName: "Axis Bank Ltd",
+    accountName: "HIGHRISE RESEARCH",
+    accountNumber: "50200116853029",
+    ifsc: "HDFC0006155",
+    bankName: "HDFC Bank, Nipaniya Branch",
+    upiId: "highriseresearch.ra@validhdfc",
   };
 
   // ✅ Safe Clipboard Copy (handles errors)
@@ -150,7 +151,24 @@ const PaymentSection = () => {
                       onClick={() => handleCopy(bankDetails.accountNumber, "acc")}
                       className="p-3 rounded-xl bg-slate-50 hover:bg-blue-50 transition"
                     >
-                      {copied === "acc" ? <Check /> : <Copy />}
+                      {copied === "acc" ? <Check size={20} /> : <Copy size={20} />}
+                    </button>
+                  </div>
+
+                  {/* UPI ID */}
+                  <div className="flex justify-between items-center border-b pb-4">
+                    <div>
+                      <p className="text-xs text-slate-400">UPI ID</p>
+                      <p className="text-lg font-mono font-bold text-blue-600">
+                        {bankDetails.upiId}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => handleCopy(bankDetails.upiId, "upi")}
+                      className="p-3 rounded-xl bg-slate-50 hover:bg-blue-50 transition"
+                    >
+                      {copied === "upi" ? <Check size={20} /> : <Copy size={20} />}
                     </button>
                   </div>
 

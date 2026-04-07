@@ -6,15 +6,15 @@ import { Phone, MapPin, Mail, MessageSquare, Clock, ShieldCheck } from 'lucide-r
 const Contact = () => {
   return (
     <main className="bg-white text-slate-900">
-      <PageHero 
-        title="Contact Us." 
+      <PageHero
+        title="Contact Us."
         subtitle="We're here to help you navigate the markets with confidence."
         backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
       />
 
       <section className="py-24 px-6 md:px-16 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20">
-          
+
           {/* --- Contact Info --- */}
           <div className="space-y-12">
             <motion.div
@@ -36,8 +36,7 @@ const Contact = () => {
                   <Phone size={20} />
                 </div>
                 <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Call Us</h4>
-                <p className="font-bold text-slate-900">+91 98272 16004</p>
-                <p className="font-bold text-slate-900">+91 84618 83444</p>
+                <p className="font-bold text-slate-900">+91 90986 93674</p>
               </div>
 
               <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
@@ -45,8 +44,7 @@ const Contact = () => {
                   <Mail size={20} />
                 </div>
                 <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Email Us</h4>
-                <p className="font-bold text-slate-900">research@highrise.com</p>
-                <p className="font-bold text-slate-900">support@highrise.com</p>
+                <p className="font-bold text-slate-900">pavanraghuvanshi2014@gmail.com</p>
               </div>
 
               <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
@@ -68,14 +66,20 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
-              <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-              <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">SEBI Registered Research Analyst - INH000000000</p>
+            <div className="flex flex-col gap-3 p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
+                <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">SEBI Registered Research Analyst - INH000009427</p>
+              </div>
+              <div className="flex items-center gap-3 pt-3 border-t border-emerald-200/50">
+                <Building2 className="text-emerald-500 shrink-0" size={20} />
+                <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">BSE Enlistment No - 5543</p>
+              </div>
             </div>
           </div>
 
           {/* --- Contact Form --- */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -89,17 +93,17 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-slate-400 font-black">Full Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300" 
+                  <input
+                    type="text"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300"
                     placeholder="John Doe"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-slate-400 font-black">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300" 
+                  <input
+                    type="tel"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -107,18 +111,18 @@ const Contact = () => {
 
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-slate-400 font-black">Email Address</label>
-                <input 
-                  type="email" 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300" 
+                <input
+                  type="email"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300"
                   placeholder="john@example.com"
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-slate-400 font-black">Message</label>
-                <textarea 
+                <textarea
                   rows={4}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300 resize-none" 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50/50 transition-all font-bold placeholder-slate-300 resize-none"
                   placeholder="Tell us about your trading goals..."
                 ></textarea>
               </div>

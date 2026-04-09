@@ -1,9 +1,48 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare, Globe } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, MessageSquare, Globe, Loader2, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { db } from '../../Firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Contact = () => {
   const [activeField, setActiveField] = useState(null);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.message) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        timestamp: serverTimestamp(),
+      });
+      setSuccess(true);
+      setFormData({ fullName: '', email: '', phone: '', message: '' });
+      setTimeout(() => setSuccess(false), 5000);
+    } catch (error) {
+      console.error("Error submitting homepage contact form: ", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -93,11 +132,9 @@ const Contact = () => {
               variants={itemVariants}
               whileHover={{ y: -4 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/72.8777,19.0760,12,0/600x400?access_token=YOUR_TOKEN')] bg-cover bg-center grayscale opacity-60"
-                whileHover={{ grayscale: 0, scale: 1.1 }}
-                transition={{ duration: 1 }}
-              ></motion.div>
+              <div
+                className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-60 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+              ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
               <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white shadow-sm">
                 <Globe size={14} className="text-blue-600" />
@@ -119,7 +156,7 @@ const Contact = () => {
               whileHover={{ y: -8 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name Input */}
                   <motion.div
@@ -132,14 +169,18 @@ const Contact = () => {
                     <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
                     <motion.input
                       type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
                       placeholder="John Doe"
                       onFocus={() => setActiveField('name')}
                       onBlur={() => setActiveField(null)}
                       className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all duration-300 outline-none ${activeField === 'name' ? 'border-blue-500 bg-white shadow-[0_0_20px_rgba(59,130,246,0.15)]' : 'border-transparent'}`}
                       whileFocus={{ scale: 1.02 }}
+                      required
                     />
                   </motion.div>
-                  {/* Email Input */}
+                  {/* Phone Input */}
                   <motion.div
                     className="space-y-2"
                     initial={{ opacity: 0, y: 10 }}
@@ -147,19 +188,23 @@ const Contact = () => {
                     transition={{ delay: 0.15 }}
                     viewport={{ once: true }}
                   >
-                    <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+                    <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
                     <motion.input
-                      type="email"
-                      placeholder="john@example.com"
-                      onFocus={() => setActiveField('email')}
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 98765 43210"
+                      onFocus={() => setActiveField('phone')}
                       onBlur={() => setActiveField(null)}
-                      className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all duration-300 outline-none ${activeField === 'email' ? 'border-blue-500 bg-white shadow-[0_0_20px_rgba(59,130,246,0.15)]' : 'border-transparent'}`}
+                      className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all duration-300 outline-none ${activeField === 'phone' ? 'border-blue-500 bg-white shadow-[0_0_20px_rgba(59,130,246,0.15)]' : 'border-transparent'}`}
                       whileFocus={{ scale: 1.02 }}
+                      required
                     />
                   </motion.div>
                 </div>
 
-                {/* Subject / Message Input */}
+                {/* Email Input */}
                 <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0, y: 10 }}
@@ -167,30 +212,78 @@ const Contact = () => {
                   transition={{ delay: 0.2 }}
                   viewport={{ once: true }}
                 >
+                  <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+                  <motion.input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    onFocus={() => setActiveField('email')}
+                    onBlur={() => setActiveField(null)}
+                    className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all duration-300 outline-none ${activeField === 'email' ? 'border-blue-500 bg-white shadow-[0_0_20px_rgba(59,130,246,0.15)]' : 'border-transparent'}`}
+                    whileFocus={{ scale: 1.02 }}
+                    required
+                  />
+                </motion.div>
+
+                {/* Message Input */}
+                <motion.div
+                  className="space-y-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 }}
+                  viewport={{ once: true }}
+                >
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Your Message</label>
                   <motion.textarea
-                    rows="5"
+                    rows="4"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="How can our research help you?"
                     onFocus={() => setActiveField('msg')}
                     onBlur={() => setActiveField(null)}
                     className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all duration-300 outline-none resize-none ${activeField === 'msg' ? 'border-blue-500 bg-white shadow-[0_0_20px_rgba(59,130,246,0.15)]' : 'border-transparent'}`}
                     whileFocus={{ scale: 1.02 }}
+                    required
                   ></motion.textarea>
                 </motion.div>
 
                 <motion.button
-                  className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 group"
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 group disabled:opacity-70 disabled:cursor-not-allowed"
                   whileHover={{ backgroundColor: '#2563eb', boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3)' }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Send Inquiry
-                  <motion.div
-                    className="transition-transform duration-300"
-                    whileHover={{ translateX: 4, translateY: -4 }}
-                  >
-                    <Send size={18} />
-                  </motion.div>
+                  {loading ? (
+                    <Loader2 className="animate-spin" />
+                  ) : (
+                    <>
+                      Send Inquiry
+                      <motion.div
+                        className="transition-transform duration-300"
+                        whileHover={{ translateX: 4, translateY: -4 }}
+                      >
+                        <Send size={18} />
+                      </motion.div>
+                    </>
+                  )}
                 </motion.button>
+
+                <AnimatePresence>
+                  {success && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center gap-3 text-emerald-700 font-bold text-sm text-center"
+                    >
+                      <CheckCircle2 size={18} /> Inquiry sent! We'll get back to you soon.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <motion.p
                   className="text-center text-[11px] text-slate-400 font-medium"
@@ -220,4 +313,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact

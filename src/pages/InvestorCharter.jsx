@@ -1,9 +1,9 @@
-    import PageHero from '../Components/PageHero';
-    import { motion } from 'framer-motion';
-import { 
-  Shield, Target, Eye, BookOpen, Briefcase, 
-  Scale, MessageSquare, Bell, CheckCircle2, 
-  XCircle, AlertTriangle, ArrowRight 
+import PageHero from '../Components/PageHero';
+import { motion } from 'framer-motion';
+import {
+  Shield, Target, Eye, BookOpen, Briefcase,
+  Scale, MessageSquare, Bell, CheckCircle2,
+  XCircle, AlertTriangle, ArrowRight, MapPin, Phone, Mail
 } from 'lucide-react';
 
 const InvestorCharter = () => {
@@ -23,7 +23,7 @@ const InvestorCharter = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen font-sans antialiased text-slate-900">
-      <PageHero 
+      <PageHero
         title="Investor Charter"
         subtitle="Your Rights and Our Responsibilities as a SEBI Registered Research Analyst."
         backgroundImage="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop"
@@ -32,14 +32,14 @@ const InvestorCharter = () => {
       {/* 1. Vision & Mission Section */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {/* Vision */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="p-10 rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden group shadow-xl"
             >
@@ -52,7 +52,7 @@ const InvestorCharter = () => {
             </motion.div>
 
             {/* Mission */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-lg transition-all"
             >
@@ -71,11 +71,11 @@ const InvestorCharter = () => {
       {/* 2. BUSINESS TRANSACTED & SERVICES PROVIDED */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
+
             {/* Left Column: Business Transacted */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-5 space-y-6"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ const InvestorCharter = () => {
                 <p className="text-slate-500 max-w-sm mb-8">
                   Core operations and obligations of the Research Analyst with respect to the investors.
                 </p>
-                
+
                 <div className="p-6 bg-[#F8FAFC] rounded-2xl border border-slate-100 flex gap-4 items-center">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
                     <Briefcase className="text-blue-600" size={20} />
@@ -102,7 +102,7 @@ const InvestorCharter = () => {
             </motion.div>
 
             {/* Right Column: Business List */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-7 space-y-4"
               variants={containerVariants}
               initial="hidden"
@@ -118,8 +118,8 @@ const InvestorCharter = () => {
                 "To ensure that all advertisements are in adherence to the provisions of the Advertisement Code for Research Analysts.",
                 "To maintain records of interactions with all clients including prospective clients."
               ].map((text, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   variants={itemVariants}
                   className="p-5 bg-[#F8FAFC] border border-slate-100 rounded-2xl hover:border-blue-200 transition-colors flex gap-4"
                 >
@@ -135,7 +135,7 @@ const InvestorCharter = () => {
           {/* Services Provided Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Side Header */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ const InvestorCharter = () => {
 
             {/* Right Side Bento Grid */}
             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              
+
               {/* Onboarding Box */}
               <div className="p-8 bg-[#F8FAFC] border border-slate-100 rounded-[2rem] md:col-span-2">
                 <h4 className="font-black text-slate-900 mb-4 flex items-center gap-2">
@@ -185,8 +185,8 @@ const InvestorCharter = () => {
       {/* 3. GRIEVANCE REDRESSAL MECHANISM */}
       <section className="py-24 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
+
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +200,7 @@ const InvestorCharter = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
+
             {/* Step 1 */}
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm relative group">
               <span className="absolute top-6 right-6 text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Level 01</span>
@@ -241,24 +241,24 @@ const InvestorCharter = () => {
               </p>
               <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100 space-y-4">
                 <div className="flex gap-4 items-start">
-                   <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0"><MapPin size={18} className="text-blue-600" /></div>
-                   <p className="text-xs font-bold text-slate-700 leading-relaxed uppercase">
+                  <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0"><MapPin size={18} className="text-blue-600" /></div>
+                  <p className="text-xs font-bold text-slate-700 leading-relaxed uppercase">
                     SEBI Bhavan BKC Address : Plot No.C4-A, 'G' Block Bandra-Kurla Complex, Bandra (East), Mumbai - 400051, Maharashtra
-                   </p>
+                  </p>
                 </div>
                 <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-slate-200">
-                   <div className="flex items-center gap-2">
-                     <Phone size={14} className="text-blue-500" />
-                     <span className="text-[10px] font-black text-slate-500 tracking-wider">+91-22-26449000</span>
-                   </div>
-                   <div className="flex items-center gap-2">
-                     <Mail size={14} className="text-blue-500" />
-                     <span className="text-[10px] font-black text-slate-500 tracking-wider uppercase">sebi@sebi.gov.in</span>
-                   </div>
-                   <div className="flex items-center gap-2">
-                     <Shield size={14} className="text-emerald-500" />
-                     <span className="text-[10px] font-black text-slate-900 tracking-wider">HELPLINE: 1800 22 7575</span>
-                   </div>
+                  <div className="flex items-center gap-2">
+                    <Phone size={14} className="text-blue-500" />
+                    <span className="text-[10px] font-black text-slate-500 tracking-wider">+91-22-26449000</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail size={14} className="text-blue-500" />
+                    <span className="text-[10px] font-black text-slate-500 tracking-wider uppercase">sebi@sebi.gov.in</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Shield size={14} className="text-emerald-500" />
+                    <span className="text-[10px] font-black text-slate-900 tracking-wider">HELPLINE: 1800 22 7575</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -269,19 +269,19 @@ const InvestorCharter = () => {
 
       {/* 4. RIGHTS & EXPECTATIONS */}
       <section className="py-24 bg-white relative overflow-hidden">
-        
+
         {/* Abstract Glow */}
         <div className="absolute top-1/2 -left-20 w-[300px] h-[300px] bg-blue-100/30 blur-[100px] -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             {/* Left Column: Rights */}
             <div>
               <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section E</p>
               <h2 className="text-4xl font-black text-slate-900 mb-8">Rights of Investors</h2>
-              
+
               <div className="space-y-4">
                 {[
                   "Right to Privacy and Confidentiality",
@@ -310,7 +310,7 @@ const InvestorCharter = () => {
               <div className="mb-6 p-8 bg-[#F8FAFC] border border-emerald-100 rounded-[2rem] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50 blur-[30px]" />
                 <h4 className="font-black text-emerald-700 mb-4 flex items-center gap-2">
-                   The Do's
+                  The Do's
                 </h4>
                 <ul className="space-y-3 text-sm font-medium text-slate-600">
                   <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Always deal with SEBI registered Research Analysts.</li>
@@ -324,7 +324,7 @@ const InvestorCharter = () => {
               <div className="p-8 bg-[#F8FAFC] border border-rose-100 rounded-[2rem] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-rose-50 blur-[30px]" />
                 <h4 className="font-black text-rose-700 mb-4 flex items-center gap-2">
-                   The Don'ts
+                  The Don'ts
                 </h4>
                 <ul className="space-y-3 text-sm font-medium text-slate-600">
                   <li className="flex gap-2 items-start"><XCircle size={16} className="text-rose-500 mt-0.5 flex-shrink-0" /> Do not provide funds for investment to the Research Analyst.</li>
@@ -337,7 +337,7 @@ const InvestorCharter = () => {
             </div>
 
           </div>
-          
+
         </div>
       </section>
 

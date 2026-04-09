@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { collection, addDoc, serverTimestamp, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "../Firebase";
+import { db, auth } from "../Firebase";
+import { signOut } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, X, Upload, CheckCircle2, Loader2, Trash2, ShieldAlert, Edit2 } from "lucide-react";
+import { 
+  Plus, X, Upload, CheckCircle2, Loader2, Trash2, 
+  ShieldAlert, ShieldCheck, Edit2, LayoutDashboard, Mail, User, 
+  Calendar, Phone, MessageSquare, Clock, LogOut 
+} from "lucide-react";
 import PageHero from "../Components/PageHero";
 
 const Admin = () => {
@@ -11,6 +15,26 @@ const Admin = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
+  const [isFetchingContacts, setIsFetchingContacts] = useState(false);
+  const [contacts, setContacts] = useState([]);
+  const [currentTab, setCurrentTab] = useState("services");
+  const [kycSubmissions, setKycSubmissions] = useState([]);
+  const [isFetchingKyc, setIsFetchingKyc] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    setCurrentUser(auth.currentUser);
+  }, []);
+
+  const handleLogout = async () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error("Logout error:", error);
+      }
+    }
+  };
 
   // Form State
   const [title, setTitle] = useState("");
@@ -19,10 +43,40 @@ const Admin = () => {
   const [features, setFeatures] = useState([""]);
   const [indexNumber, setIndexNumber] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [existingImageUrl, setExistingImageUrl] = useState("");
 
   useEffect(() => {
     fetchServices();
+    fetchContacts();
+    fetchKyc();
   }, []);
+
+  const fetchKyc = async () => {
+    setIsFetchingKyc(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, "kyc"));
+      const kycData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      kycData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+      setKycSubmissions(kycData);
+    } catch (error) {
+      console.error("Error fetching KYC:", error);
+    } finally {
+      setIsFetchingKyc(false);
+    }
+  };
+
+  const deleteKyc = async (id) => {
+    if (window.confirm("Delete this KYC record?")) {
+      try {
+        await deleteDoc(doc(db, "kyc", id));
+        fetchKyc();
+      } catch (error) {
+        console.error("Error deleting KYC:", error);
+      }
+    }
+  };
 
   const fetchServices = async () => {
     setIsFetching(true);
@@ -39,6 +93,32 @@ const Admin = () => {
     }
   };
 
+  const fetchContacts = async () => {
+    setIsFetchingContacts(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, "contacts"));
+      const contactsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      // Sort by timestamp if it exists, descending
+      contactsData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+      setContacts(contactsData);
+    } catch (error) {
+      console.error("Error fetching contacts:", error);
+    } finally {
+      setIsFetchingContacts(false);
+    }
+  };
+
+  const deleteContact = async (id) => {
+    if (window.confirm("Delete this message?")) {
+      try {
+        await deleteDoc(doc(db, "contacts", id));
+        fetchContacts();
+      } catch (error) {
+        console.error("Error deleting contact:", error);
+      }
+    }
+  };
+
   const handleEdit = (service) => {
     setEditingId(service.id);
     setTitle(service.title);
@@ -46,6 +126,9 @@ const Admin = () => {
     setFullDesc(service.fullDesc);
     setFeatures(service.features && service.features.length > 0 ? service.features : [""]);
     setIndexNumber(service.indexNumber || "");
+    setExistingImageUrl(service.imageUrl || "");
+    setImagePreview(service.imageUrl || null);
+    setImage(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -56,6 +139,9 @@ const Admin = () => {
     setFullDesc("");
     setFeatures([""]);
     setIndexNumber("");
+    setImage(null);
+    setImagePreview(null);
+    setExistingImageUrl("");
   };
 
   const handleDelete = async (id) => {
@@ -83,6 +169,14 @@ const Admin = () => {
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !shortDesc || !fullDesc) {
@@ -95,12 +189,36 @@ const Admin = () => {
       // 1. Filter empty features
       const validFeatures = features.filter(f => f.trim() !== "");
 
+      let imageUrl = existingImageUrl;
+
+      if (image) {
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "uglykgfd");
+        
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/duzwys877/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Cloudinary upload failed");
+        }
+
+        const data = await response.json();
+        imageUrl = data.secure_url;
+      }
+
       const serviceData = {
         title,
         shortDesc,
         fullDesc,
         features: validFeatures,
         indexNumber: indexNumber ? Number(indexNumber) : 0,
+        imageUrl,
         updatedAt: serverTimestamp(),
       };
 
@@ -129,26 +247,96 @@ const Admin = () => {
   };
 
   return (
-    <main className="bg-[#f7f7f5] min-h-screen pt-24 pb-12 text-[#111827]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="mb-8 flex items-center gap-3">
-          <ShieldAlert className="text-red-600" size={32} />
-          <div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">Admin Dashboard</h1>
-            <p className="text-slate-500 text-sm font-medium">Manage your services and content</p>
-          </div>
+    <main className="bg-[#f8fafc] min-h-screen text-[#111827] flex">
+      {/* Sidebar Navigation */}
+      <div className="w-64 bg-slate-900 h-screen sticky top-0 flex flex-col p-6 text-white shrink-0">
+        <div className="flex items-center gap-3 mb-12 px-2">
+          <ShieldAlert className="text-blue-400" size={32} />
+          <h2 className="text-xl font-black tracking-tight">Admin</h2>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          
-          {/* Form Section */}
-          <div className="lg:col-span-3">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-100 relative overflow-hidden"
+        <nav className="flex-1 space-y-2">
+          <button 
+            onClick={() => setCurrentTab("services")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
+              currentTab === "services" ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "text-slate-400 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <LayoutDashboard size={20} />
+            Services
+          </button>
+          <button 
+            onClick={() => setCurrentTab("contacts")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
+              currentTab === "contacts" ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "text-slate-400 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <Mail size={20} />
+            Contact Requests
+            {contacts.length > 0 && <span className="ml-auto w-5 h-5 bg-red-500 rounded-full text-[10px] flex items-center justify-center">{contacts.length}</span>}
+          </button>
+          <button 
+            onClick={() => setCurrentTab("kyc")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
+              currentTab === "kyc" ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "text-slate-400 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <ShieldAlert size={20} />
+            KYC Submissions
+            {kycSubmissions.length > 0 && <span className="ml-auto w-5 h-5 bg-blue-500 rounded-full text-[10px] flex items-center justify-center">{kycSubmissions.length}</span>}
+          </button>
+        </nav>
+
+        <div className="mt-auto pt-6 border-t border-slate-800">
+          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2 mb-4">Account</p>
+          <div className="flex items-center justify-between px-2">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-blue-400">
+                <User size={16} />
+              </div>
+              <div className="max-w-[100px]">
+                <p className="text-xs font-bold truncate">{currentUser?.displayName || "Admin User"}</p>
+                <p className="text-[10px] text-slate-500 truncate">{currentUser?.email}</p>
+              </div>
+            </div>
+            <button 
+              onClick={handleLogout}
+              className="p-2 text-slate-500 hover:text-red-400 hover:bg-slate-800 rounded-lg transition-all"
+              title="Sign Out"
             >
+              <LogOut size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-1 overflow-y-auto h-screen p-8 md:p-12">
+        <div className="max-w-7xl mx-auto">
+          
+          <AnimatePresence mode="wait">
+            {currentTab === "services" ? (
+              <motion.div 
+                key="services"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-8"
+              >
+                <div className="flex justify-between items-end">
+                  <div>
+                    <h1 className="text-4xl font-black text-slate-900 tracking-tight">Manage Services</h1>
+                    <p className="text-slate-500 font-medium">Create, edit and organize your offerings</p>
+                  </div>
+                </div>
+
+                <div className="grid lg:grid-cols-5 gap-8">
+                  {/* Form Section */}
+                  <div className="lg:col-span-3">
+                    <motion.div 
+                      className="bg-white rounded-[2rem] p-6 md:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden"
+                    >
+                      {/* ... existing form ... */}
               <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center justify-between">
                 <span className="flex items-center gap-2">
                   {editingId ? <Edit2 className="text-blue-600" /> : <Plus className="text-blue-600" />}
@@ -198,6 +386,44 @@ const Admin = () => {
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
                     placeholder="Brief summary for cards..."
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">Service Hero Image</label>
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    <div className="w-full md:w-1/3 aspect-video rounded-2xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center overflow-hidden relative group">
+                      {imagePreview ? (
+                        <>
+                          <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <Upload className="text-white" size={24} />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-center p-4">
+                          <Upload className="mx-auto text-slate-300 mb-2" size={32} />
+                          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Image</p>
+                        </div>
+                      )}
+                      <input 
+                        type="file" 
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="absolute inset-0 opacity-0 cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-slate-500 mb-4">
+                        This image will appear in the Hero section of the service details page. 
+                        Recommended size: 1920x1080px.
+                      </p>
+                      {image && (
+                        <div className="flex items-center gap-2 text-xs font-bold text-blue-600 bg-blue-50 px-3 py-2 rounded-lg inline-flex">
+                          <CheckCircle2 size={14} /> {image.name}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -281,55 +507,261 @@ const Admin = () => {
             </motion.div>
           </div>
 
-          {/* List Section */}
-          <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-xl font-bold text-slate-800 mb-4 px-2">Uploaded Services</h3>
-            
-            {isFetching ? (
-              <div className="flex justify-center p-8"><Loader2 className="animate-spin text-slate-400" /></div>
-            ) : services.length === 0 ? (
-              <div className="bg-slate-100 rounded-2xl p-8 text-center text-slate-500 text-sm">
-                No services uploaded yet.
-              </div>
-            ) : (
-              <div className="space-y-4 max-h-[800px] overflow-y-auto pr-2 pb-4 
-                [&::-webkit-scrollbar]:w-1.5 
-                [&::-webkit-scrollbar-track]:bg-transparent
-                [&::-webkit-scrollbar-thumb]:bg-slate-200 
-                [&::-webkit-scrollbar-thumb]:rounded-full"
+                  {/* List Section */}
+                  <div className="lg:col-span-2 space-y-4">
+                    <h3 className="text-xl font-bold text-slate-800 mb-4 px-2">Uploaded Services</h3>
+                    
+                    {isFetching ? (
+                      <div className="flex justify-center p-8"><Loader2 className="animate-spin text-slate-400" /></div>
+                    ) : services.length === 0 ? (
+                      <div className="bg-slate-100 rounded-2xl p-8 text-center text-slate-500 text-sm">
+                        No services uploaded yet.
+                      </div>
+                    ) : (
+                      <div className="space-y-4 max-h-[800px] overflow-y-auto pr-2 pb-4 
+                        [&::-webkit-scrollbar]:w-1.5 
+                        [&::-webkit-scrollbar-track]:bg-transparent
+                        [&::-webkit-scrollbar-thumb]:bg-slate-200 
+                        [&::-webkit-scrollbar-thumb]:rounded-full"
+                      >
+                        {services.map(service => (
+                          <motion.div 
+                            layoutId={service.id}
+                            key={service.id}
+                            className="bg-white p-4 rounded-2xl flex gap-4 border border-slate-100 shadow-sm group hover:shadow-md transition-shadow"
+                          >
+                            <div className="w-16 h-16 rounded-xl bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                              {service.imageUrl ? (
+                                <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center text-slate-300">
+                                  <Upload size={16} />
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex-1 flex flex-col justify-center">
+                              <h4 className="font-bold text-slate-900 leading-tight mb-1">{service.title}</h4>
+                              <p className="text-xs text-slate-500 line-clamp-2">{service.shortDesc}</p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <button 
+                                onClick={() => handleEdit(service)}
+                                className="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                title="Edit Service"
+                              >
+                                <Edit2 size={16} />
+                              </button>
+                              <button 
+                                onClick={() => handleDelete(service.id)}
+                                className="w-9 h-9 rounded-full flex items-center justify-center text-red-300 hover:bg-red-50 hover:text-red-500 transition-colors"
+                                title="Delete Service"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ) : currentTab === "contacts" ? (
+              <motion.div 
+                key="contacts"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-8"
               >
-                {services.map(service => (
-                  <motion.div 
-                    layoutId={service.id}
-                    key={service.id}
-                    className="bg-white p-4 rounded-2xl flex gap-4 border border-slate-100 shadow-sm group hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex-1 flex flex-col justify-center">
-                      <h4 className="font-bold text-slate-900 leading-tight mb-1">{service.title}</h4>
-                      <p className="text-xs text-slate-500 line-clamp-2">{service.shortDesc}</p>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <button 
-                        onClick={() => handleEdit(service)}
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                        title="Edit Service"
-                      >
-                        <Edit2 size={16} />
-                      </button>
-                      <button 
-                        onClick={() => handleDelete(service.id)}
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-red-300 hover:bg-red-50 hover:text-red-500 transition-colors"
-                        title="Delete Service"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </div>
+                <div>
+                  <h1 className="text-4xl font-black text-slate-900 tracking-tight">Contact Requests</h1>
+                  <p className="text-slate-500 font-medium">Inquiries from potential clients</p>
+                </div>
 
+                {isFetchingContacts ? (
+                  <div className="flex justify-center p-20"><Loader2 className="animate-spin text-blue-600" size={40} /></div>
+                ) : contacts.length === 0 ? (
+                  <div className="bg-white border border-slate-100 rounded-[2rem] p-20 text-center shadow-sm">
+                    <Mail size={48} className="mx-auto text-slate-200 mb-4" />
+                    <p className="text-slate-500 font-bold">No contact requests yet.</p>
+                  </div>
+                ) : (
+                  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {contacts.map((contact) => (
+                      <motion.div 
+                        key={contact.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all flex flex-col group"
+                      >
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
+                            <User size={24} />
+                          </div>
+                          <button 
+                            onClick={() => deleteContact(contact.id)}
+                            className="w-10 h-10 rounded-xl bg-red-50 text-red-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
+
+                        <div className="space-y-4 mb-6">
+                          <div>
+                            <h4 className="text-lg font-black text-slate-900">{contact.fullName}</h4>
+                            <p className="text-xs text-blue-600 font-bold uppercase tracking-widest">New Query</p>
+                          </div>
+
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3 text-slate-500">
+                              <Phone size={14} className="shrink-0" />
+                              <span className="text-sm font-bold">{contact.phone}</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-500">
+                              <Mail size={14} className="shrink-0" />
+                              <span className="text-sm font-bold truncate">{contact.email}</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-400">
+                              <Clock size={14} className="shrink-0" />
+                              <span className="text-[10px] font-black uppercase tracking-wider">
+                                {contact.timestamp ? new Date(contact.timestamp.seconds * 1000).toLocaleString() : "Recently"}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-auto p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                          <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                            <MessageSquare size={12} /> Message
+                          </p>
+                          <p className="text-sm font-medium text-slate-700 leading-relaxed italic line-clamp-4">
+                            "{contact.message}"
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="kyc"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-8"
+              >
+                <div>
+                  <h1 className="text-4xl font-black text-slate-900 tracking-tight">KYC Submissions</h1>
+                  <p className="text-slate-500 font-medium">Identity verification & agreements</p>
+                </div>
+
+                {isFetchingKyc ? (
+                  <div className="flex justify-center p-20"><Loader2 className="animate-spin text-blue-600" size={40} /></div>
+                ) : kycSubmissions.length === 0 ? (
+                  <div className="bg-white border border-slate-100 rounded-[2rem] p-20 text-center shadow-sm">
+                    <ShieldCheck size={48} className="mx-auto text-slate-200 mb-4" />
+                    <p className="text-slate-500 font-bold">No KYC submissions found.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-6">
+                    {kycSubmissions.map((kyc) => (
+                      <motion.div 
+                        key={kyc.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all flex flex-col lg:flex-row gap-8 group"
+                      >
+                         <div className="flex-1 space-y-6">
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
+                                <User size={24} />
+                              </div>
+                              <div>
+                                <h3 className="text-xl font-black text-slate-900">{kyc.fullName}</h3>
+                                <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
+                                  Submitted on {kyc.timestamp ? new Date(kyc.timestamp.seconds * 1000).toLocaleDateString() : "Recently"}
+                                </p>
+                              </div>
+                            </div>
+                            <button 
+                              onClick={() => deleteKyc(kyc.id)}
+                              className="w-10 h-10 rounded-xl bg-red-50 text-red-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-3xl">
+                             <div className="space-y-1">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Father's Name</p>
+                                <p className="text-sm font-bold text-slate-700">{kyc.fatherName}</p>
+                             </div>
+                             <div className="space-y-1">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Mobile</p>
+                                <p className="text-sm font-bold text-slate-700">{kyc.mobile}</p>
+                             </div>
+                             <div className="space-y-1">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email</p>
+                                <p className="text-sm font-bold text-slate-700">{kyc.email}</p>
+                             </div>
+                             <div className="space-y-1">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">DOB</p>
+                                <p className="text-sm font-bold text-slate-700">{kyc.dob}</p>
+                             </div>
+                             <div className="space-y-1">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">PAN Number</p>
+                                <p className="text-sm font-black text-blue-600 uppercase italic">{kyc.panNumber}</p>
+                             </div>
+                             <div className="space-y-1 sm:col-span-2">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Address</p>
+                                <p className="text-sm font-bold text-slate-700 leading-relaxed">{kyc.address}</p>
+                             </div>
+                          </div>
+                        </div>
+
+                        <div className="lg:w-80 space-y-4">
+                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Document Vault</p>
+                          <div className="grid grid-cols-3 lg:grid-cols-1 gap-4">
+                            {[
+                              { url: kyc.panUrl, name: 'PAN Card' },
+                              { url: kyc.aadharFrontUrl, name: 'Aadhar Front' },
+                              { url: kyc.aadharBackUrl, name: 'Aadhar Back' }
+                            ].map((doc, i) => (
+                              <a 
+                                key={i}
+                                href={doc.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="group/doc relative aspect-video rounded-2xl overflow-hidden border border-slate-200 bg-slate-100"
+                              >
+                                {doc.url ? (
+                                  <>
+                                    <img src={doc.url} alt={doc.name} className="w-full h-full object-cover transition-transform duration-500 group-hover/doc:scale-110" />
+                                    <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/doc:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1">
+                                      <span className="text-[10px] text-white font-black uppercase tracking-widest">{doc.name}</span>
+                                      <span className="text-[8px] text-blue-300 font-bold uppercase tracking-[0.2em]">Click to expand</span>
+                                    </div>
+                                  </>
+                                ) : (
+                                  <div className="w-full h-full flex flex-col items-center justify-center gap-1 opacity-40">
+                                    <ShieldCheck size={20} />
+                                    <span className="text-[8px] font-black uppercase tracking-widest">Missing</span>
+                                  </div>
+                                )}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </main>

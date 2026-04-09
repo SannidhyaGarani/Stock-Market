@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../../Firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
@@ -121,11 +121,19 @@ const Services = () => {
 
   useEffect(() => {
     const fetchServices = async () => {
-      const querySnapshot = await getDocs(collection(db, "services"));
-      const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      // Sort by indexNumber
-      servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
-      setServiceList(servicesData);
+      try {
+        const q = query(collection(db, "services"), orderBy("indexNumber", "asc"));
+        const querySnapshot = await getDocs(q);
+        const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setServiceList(servicesData);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+        // Fallback to manual sort if query fails (e.g. missing index)
+        const querySnapshot = await getDocs(collection(db, "services"));
+        const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
+        setServiceList(servicesData);
+      }
     };
     fetchServices();
   }, []);
@@ -173,7 +181,7 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceList.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
 
           {/* Institutional CTA Card - Distinct Premium Style */}

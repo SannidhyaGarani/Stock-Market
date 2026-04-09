@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../Firebase';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,10 +13,9 @@ const Services = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'services'));
+        const q = query(collection(db, 'services'), orderBy('indexNumber', 'asc'));
+        const querySnapshot = await getDocs(q);
         const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        // Sort by indexNumber
-        servicesData.sort((a, b) => (Number(a.indexNumber) || 0) - (Number(b.indexNumber) || 0));
         setServices(servicesData);
       } catch (error) {
         console.error("Error fetching services:", error);

@@ -17,7 +17,7 @@ const Navbar = () => {
     { name: 'About', href: '/about' },
     { name: 'Research', href: '/services' },
     { name: 'Investor Charter', href: '/investor' },
-    { name: 'Policies', href: '#' },
+    { name: 'More', href: '#' },
   ];
 
   const policyLinks = [
@@ -26,6 +26,8 @@ const Navbar = () => {
     { name: 'Refund Policy', href: '/refund' },
     { name: 'AML Policy', href: '/aml' },
     { name: 'Disclaimer', href: '/disclaimer' },
+    { name: 'Complaints', href: '/complaints' },
+    { name: 'KYC & Agreement', href: '/kyc' },
   ];
 
   useEffect(() => {
@@ -144,7 +146,7 @@ const Navbar = () => {
                     )}
                   </AnimatePresence>
                 </motion.div>
-              ) : link.name === 'Policies' ? (
+              ) : link.name === 'More' ? (
                 <motion.div 
                   key={link.name}
                   className="relative"

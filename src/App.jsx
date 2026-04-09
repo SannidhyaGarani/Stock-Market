@@ -23,6 +23,7 @@ import AMLPolicy from "./pages/AmlPolicy.jsx";
 import Disclaimer from "./pages/Disclamer.jsx";
 import Complaints from "./pages/Complaints.jsx";
 import KYC from "./pages/KYC.jsx";
+import Alerts from "./pages/Alerts.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -61,6 +62,7 @@ function App() {
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/kyc" element={<KYC />} />
+        <Route path="/alerts" element={<Alerts />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

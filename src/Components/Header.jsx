@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase';
-import { Menu, X, MessageCircle, ChevronRight, Zap, ShieldCheck, ChevronDown } from 'lucide-react';
+import { Menu, X, MessageCircle, ChevronRight, Zap, ShieldCheck, ShieldAlert, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -17,6 +17,7 @@ const Navbar = () => {
     { name: 'About', href: '/about' },
     { name: 'Research', href: '/services' },
     { name: 'Investor Charter', href: '/investor' },
+    { name: 'Complaints', href: '/complaints' },
     { name: 'More', href: '#' },
   ];
 
@@ -26,7 +27,6 @@ const Navbar = () => {
     { name: 'Refund Policy', href: '/refund' },
     { name: 'AML Policy', href: '/aml' },
     { name: 'Disclaimer', href: '/disclaimer' },
-    { name: 'Complaints', href: '/complaints' },
     { name: 'KYC & Agreement', href: '/kyc' },
   ];
 
@@ -201,10 +201,12 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/contact"
-                className="hidden sm:flex items-center justify-center w-10 h-10 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors"
+                to="/alerts"
+                className="hidden sm:flex items-center justify-center w-10 h-10 text-red-500 bg-red-50 hover:bg-red-100 border border-red-100 rounded-full transition-colors relative"
+                title="Security Alerts"
               >
-                <MessageCircle size={20} />
+                <ShieldAlert size={18} />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-600 rounded-full animate-pulse border-2 border-white"></span>
               </Link>
             </motion.div>
             

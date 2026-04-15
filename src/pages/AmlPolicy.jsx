@@ -49,7 +49,7 @@ const AMLPolicy = () => {
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/30 blur-[60px] group-hover:bg-blue-600/50 transition-colors" />
               <ShieldAlert size={32} className="text-blue-400 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Legal Framework</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">Legal Framework</h3>
               <h4 className="text-2xl font-bold mb-4">Prevention of Money Laundering Act, 2002</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
@@ -74,7 +74,7 @@ const AMLPolicy = () => {
                   The Financial Intelligence Unit-India is the central national agency responsible for receiving, processing, and disseminating information on suspect financial operations.
                 </p>
               </div>
-              <button className="w-full py-3 bg-[#F8FAFC] text-slate-900 text-xs font-bold rounded-xl uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-all border border-slate-100 flex items-center justify-center gap-2">
+              <button className="w-full py-3 bg-[#F8FAFC] text-slate-900 text-sm font-bold rounded-xl uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-all border border-slate-100 flex items-center justify-center gap-2">
                 Learn More <ExternalLink size={14} />
               </button>
             </motion.div>
@@ -105,8 +105,8 @@ const AMLPolicy = () => {
                     "Terrorism: Reasonable grounds pointing directly to financing terrorist channels."
                   ].map((item, idx) => (
                     <div key={idx} className="bg-[#F8FAFC] p-5 rounded-xl border border-slate-50 flex gap-3 items-start">
-                      <span className="text-blue-600 font-black text-xs">0{idx + 1}.</span>
-                      <p className="text-xs font-bold text-slate-700">{item}</p>
+                      <span className="text-blue-600 font-black text-sm">0{idx + 1}.</span>
+                      <p className="text-sm font-bold text-slate-700">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -123,7 +123,7 @@ const AMLPolicy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-12">
-            <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Red Flags</p>
+            <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Red Flags</p>
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 mb-4">Examples of Suspicious Transactions</h2>
             <p className="text-slate-500 max-w-2xl mx-auto font-medium">
               Categorized data parameters routinely mapped and reported directly to the FIU-IND system protocols.
@@ -136,7 +136,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <Fingerprint className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Identity of Clients</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Identification documents found to be forged.</li>
                 <li className="flex gap-2">• False address details furnished by holder.</li>
                 <li className="flex gap-2">• Doubts over the real beneficiary of the account.</li>
@@ -147,7 +147,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <Search className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Suspicious Background</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Positive matches of names/DOB on watchlist.</li>
                 <li className="flex gap-2">• Heavily linked accounts of publicly known criminals.</li>
               </ul>
@@ -157,7 +157,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <Users className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Multiple Accounts</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Massive grid of accounts sharing common signatories without rationale.</li>
                 <li className="flex gap-2">• Unexplained cross-transfers with zero logic applied.</li>
               </ul>
@@ -167,7 +167,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <Activity className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Activity in Accounts</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Sudden unexplained activity in long-dormant accounts.</li>
                 <li className="flex gap-2">• Activity strictly inconsistent with declared business lines.</li>
               </ul>
@@ -177,7 +177,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <CreditCard className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Nature of Transactions</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Doubtful sources of funds or overseas transfers.</li>
                 <li className="flex gap-2">• Dispersed ATM or deposit drops in multi-locations.</li>
                 <li className="flex gap-2">• Suspicious off-market operations in demat.</li>
@@ -188,7 +188,7 @@ const AMLPolicy = () => {
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <BarChart3 className="text-blue-600 mb-4" size={24} />
               <h4 className="text-lg font-bold text-slate-900 mb-3">Value of Transactions</h4>
-              <ul className="text-xs text-slate-500 font-medium space-y-2 leading-relaxed">
+              <ul className="text-sm text-slate-500 font-medium space-y-2 leading-relaxed">
                 <li className="flex gap-2">• Layered values keeping just below reporting thresholds.</li>
                 <li className="flex gap-2">• Large values inconsistent with client's mapped financial standing.</li>
               </ul>
@@ -201,7 +201,7 @@ const AMLPolicy = () => {
 
       {/* 4. SUB FOOTER */}
       <footer className="py-10 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
           <div>
             <p className="text-slate-900 font-black">HighRise Research</p>
             <p>SEBI Registration Research Analyst | Reg No. INH000000000</p>

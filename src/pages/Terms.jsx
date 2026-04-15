@@ -162,10 +162,7 @@ const TermsAndConditions = () => {
       </section>
 
       {/* FOOTER DISCLOSURE */}
-      <footer className="mt-20 py-10 bg-white border-t border-slate-100 text-center">
-        <p className="text-xs font-black text-slate-900 uppercase tracking-widest mb-2">HighRise Research</p>
-        <p className="text-xs text-slate-400 font-medium">SEBI Reg No. INH000000000 | All Rights Reserved © 2026</p>
-      </footer>
+      
     </div>
   );
 };

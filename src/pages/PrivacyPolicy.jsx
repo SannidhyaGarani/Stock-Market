@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/30 blur-[60px] group-hover:bg-blue-600/50 transition-colors" />
               <ShieldCheck size={32} className="text-blue-400 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Our Promise</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">Our Promise</h3>
               <h4 className="text-2xl font-bold mb-4">HighRise Research</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
                   We maintain rigorous physical, electronic, and procedural safeguards to protect your personal information. All your specific account information is highly password-protected.
                 </p>
               </div>
-              <div className="p-4 bg-[#F8FAFC] border border-slate-50 rounded-xl text-xs text-slate-400 font-medium flex items-center gap-2">
+              <div className="p-4 bg-[#F8FAFC] border border-slate-50 rounded-xl text-sm text-slate-400 font-medium flex items-center gap-2">
                 <HardDrive size={14} className="text-blue-600" /> Infrastructure is securely managed.
               </div>
             </motion.div>
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
                       <BellRing size={16} className="text-blue-600" />
                       <p className="text-sm font-bold text-slate-900">SMS & Calling Authorization</p>
                     </div>
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed">
                       Registering implies you are authorizing us to reach out via SMS and voice calls whenever natively needed to properly facilitate your active services.
                     </p>
                   </div>
@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
                       <Scale size={16} className="text-blue-600" />
                       <p className="text-sm font-bold text-slate-900">DND Registry Override</p>
                     </div>
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed">
                       We reserve the right to contact you via SMS notifications, even if your specific mobile number is actively registered under the national Do Not Disturb (DND) facility.
                     </p>
                   </div>
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
 
       {/* 3. SUB FOOTER */}
       <footer className="py-10 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
           <div>
             <p className="text-slate-900 font-black">HighRise Research</p>
             <p>© 2026 All Rights Reserved.</p>

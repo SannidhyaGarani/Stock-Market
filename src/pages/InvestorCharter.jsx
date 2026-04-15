@@ -45,7 +45,7 @@ const InvestorCharter = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/30 blur-[60px] group-hover:bg-blue-600/50 transition-colors" />
               <Eye size={32} className="text-blue-400 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Our Vision</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">Our Vision</h3>
               <p className="text-2xl font-bold leading-relaxed">
                 Invest with knowledge & safety.
               </p>
@@ -58,7 +58,7 @@ const InvestorCharter = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 blur-[50px]" />
               <Target size={32} className="text-blue-600 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Our Mission</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Our Mission</h3>
               <p className="text-lg font-medium text-slate-700 leading-relaxed">
                 Every investor should be able to invest in right investment products based on their needs, manage and monitor them to meet their goals, access reports and enjoy financial wellness.
               </p>
@@ -83,7 +83,7 @@ const InvestorCharter = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="sticky top-10">
-                <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section B</p>
+                <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Section B</p>
                 <h2 className="text-4xl font-black text-slate-900 mb-4">Business <br />Transacted</h2>
                 <p className="text-slate-500 max-w-sm mb-8">
                   Core operations and obligations of the Research Analyst with respect to the investors.
@@ -95,7 +95,7 @@ const InvestorCharter = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-900">Strictly Independent</p>
-                    <p className="text-xs text-slate-500">Unbiased views on all market securities.</p>
+                    <p className="text-sm text-slate-500">Unbiased views on all market securities.</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ const InvestorCharter = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section C</p>
+              <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Section C</p>
               <h2 className="text-4xl font-black text-slate-900 mb-4">Services Provided</h2>
               <p className="text-slate-500">
                 Outlining clear operational standards for seamless client onboarding and strictly fair disclosures.
@@ -192,7 +192,7 @@ const InvestorCharter = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section D</p>
+            <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Section D</p>
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 mb-4">Grievance Redressal</h2>
             <p className="text-slate-500 max-w-2xl mx-auto">
               We aim to resolve any discrepancies promptly. If a query arises, here are the structured steps to seek a resolution.
@@ -203,7 +203,7 @@ const InvestorCharter = () => {
 
             {/* Step 1 */}
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm relative group">
-              <span className="absolute top-6 right-6 text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Level 01</span>
+              <span className="absolute top-6 right-6 text-sm font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Level 01</span>
               <MessageSquare className="text-blue-600 mb-6" size={28} />
               <h4 className="text-lg font-bold mb-2">Reach Out to RA</h4>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -213,7 +213,7 @@ const InvestorCharter = () => {
 
             {/* Step 2 */}
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm relative group">
-              <span className="absolute top-6 right-6 text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Level 02</span>
+              <span className="absolute top-6 right-6 text-sm font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Level 02</span>
               <Scale className="text-blue-600 mb-6" size={28} />
               <h4 className="text-lg font-bold mb-2">RAASB or SCORES 2.0</h4>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -223,7 +223,7 @@ const InvestorCharter = () => {
 
             {/* Step 3 */}
             <div className="p-8 bg-slate-900 text-white rounded-[2.5rem] shadow-xl relative group">
-              <span className="absolute top-6 right-6 text-xs font-black text-blue-400 bg-slate-800 px-3 py-1 rounded-full">Level 03</span>
+              <span className="absolute top-6 right-6 text-sm font-black text-blue-400 bg-slate-800 px-3 py-1 rounded-full">Level 03</span>
               <Shield className="text-blue-400 mb-6" size={28} />
               <h4 className="text-lg font-bold mb-2">SMARTODR Platform</h4>
               <p className="text-sm text-slate-400 leading-relaxed">
@@ -242,22 +242,22 @@ const InvestorCharter = () => {
               <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100 space-y-4">
                 <div className="flex gap-4 items-start">
                   <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0"><MapPin size={18} className="text-blue-600" /></div>
-                  <p className="text-xs font-bold text-slate-700 leading-relaxed uppercase">
+                  <p className="text-sm font-bold text-slate-700 leading-relaxed uppercase">
                     SEBI Bhavan BKC Address : Plot No.C4-A, 'G' Block Bandra-Kurla Complex, Bandra (East), Mumbai - 400051, Maharashtra
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-slate-200">
                   <div className="flex items-center gap-2">
                     <Phone size={14} className="text-blue-500" />
-                    <span className="text-[10px] font-black text-slate-500 tracking-wider">+91-22-26449000</span>
+                    <span className="text-sm font-black text-slate-500 tracking-wider">+91-22-26449000</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Mail size={14} className="text-blue-500" />
-                    <span className="text-[10px] font-black text-slate-500 tracking-wider uppercase">sebi@sebi.gov.in</span>
+                    <span className="text-sm font-black text-slate-500 tracking-wider uppercase">sebi@sebi.gov.in</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Shield size={14} className="text-emerald-500" />
-                    <span className="text-[10px] font-black text-slate-900 tracking-wider">HELPLINE: 1800 22 7575</span>
+                    <span className="text-sm font-black text-slate-900 tracking-wider">HELPLINE: 1800 22 7575</span>
                   </div>
                 </div>
               </div>
@@ -279,7 +279,7 @@ const InvestorCharter = () => {
 
             {/* Left Column: Rights */}
             <div>
-              <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section E</p>
+              <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Section E</p>
               <h2 className="text-4xl font-black text-slate-900 mb-8">Rights of Investors</h2>
 
               <div className="space-y-4">
@@ -303,7 +303,7 @@ const InvestorCharter = () => {
 
             {/* Right Column: Do's & Don'ts */}
             <div>
-              <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Section F</p>
+              <p className="text-sm font-black tracking-widest text-blue-600 uppercase mb-3">Section F</p>
               <h2 className="text-4xl font-black text-slate-900 mb-8">Do's & Don'ts</h2>
 
               {/* Do's Box */}
@@ -344,7 +344,7 @@ const InvestorCharter = () => {
 
       {/* 5. FOOTER NOTICE */}
       <footer className="py-10 bg-slate-900 text-white border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
           <p>© 2026 HighRise Research. All Rights Reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition">Privacy Policy</a>

@@ -49,7 +49,7 @@ const Disclaimer = () => {
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/30 blur-[60px] group-hover:bg-blue-600/50 transition-colors" />
               <ShieldCheck size={32} className="text-blue-400 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">SEBI Registration</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">SEBI Registration</h3>
               <h4 className="text-2xl font-bold mb-4">HighRise Research</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
@@ -77,7 +77,7 @@ const Disclaimer = () => {
                   Terms and conditions of Research and Recommendation Services are detailed in our full terms document. Please refer to the same for in-depth details.
                 </p>
               </div>
-              <button className="w-full py-3 bg-[#F8FAFC] text-slate-900 text-xs font-bold rounded-xl uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-all border border-slate-100">
+              <button className="w-full py-3 bg-[#F8FAFC] text-slate-900 text-sm font-bold rounded-xl uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-all border border-slate-100">
                 View Terms Doc
               </button>
             </motion.div>
@@ -164,10 +164,10 @@ const Disclaimer = () => {
                   </div>
                   <div className="space-y-4 text-sm text-slate-600 font-medium">
                     <p>We consider ourselves and intend to be subject strictly to the jurisdiction only of the courts of <span className="font-bold text-slate-900">Indore, Madhya Pradesh, India</span>.</p>
-                    <p className="mt-4 text-xs font-bold text-slate-400">REGISTERED OFFICE: A-172 Kanak Avenue Colony, lasudiya Mori Indore</p>
+                    <p className="mt-4 text-sm font-bold text-slate-400">REGISTERED OFFICE: A-172 Kanak Avenue Colony, lasudiya Mori Indore</p>
                     <div className="mt-6 pt-6 border-t border-slate-200">
-                      <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-2">Regulatory Authority</p>
-                      <p className="text-[11px] text-slate-500 leading-relaxed font-bold">
+                      <p className="text-sm uppercase font-black text-slate-400 tracking-widest mb-2">Regulatory Authority</p>
+                      <p className="text-sm text-slate-500 leading-relaxed font-bold">
                         SEBI Office Details : SEBI Bhavan BKC Address : Plot No.C4-A, 'G' Block Bandra-Kurla Complex, Bandra (East), Mumbai - 400051, Maharashtra | Tel : +91-22-26449000 / 40459000 | Fax : +91-22-26449019-22 / 40459019-22 Email: sebi@sebi.gov.in | Toll Free Investor Helpline: 1800 22 7575
                       </p>
                     </div>
@@ -176,8 +176,8 @@ const Disclaimer = () => {
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-100 flex items-center justify-center flex-col text-center">
                   <AlertTriangle size={24} className="text-amber-500 mb-2" />
-                  <p className="text-xs font-black text-slate-900 uppercase tracking-widest mb-1">Notice</p>
-                  <p className="text-xs text-slate-500 font-medium">If you do not agree with any of the terms, please exit the site.</p>
+                  <p className="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Notice</p>
+                  <p className="text-sm text-slate-500 font-medium">If you do not agree with any of the terms, please exit the site.</p>
                 </div>
               </div>
             </motion.div>
@@ -189,7 +189,7 @@ const Disclaimer = () => {
 
       {/* 3. SUB FOOTER */}
       <footer className="py-10 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
           <p>© 2026 HighRise Research. All Rights Reserved.</p>
           <div className="flex gap-6">
             <p className="text-slate-400 font-bold uppercase tracking-widest">Compliance First</p>

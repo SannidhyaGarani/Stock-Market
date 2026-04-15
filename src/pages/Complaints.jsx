@@ -17,7 +17,7 @@ const Complaints = () => {
     visible: { opacity: 1, y: 0 }
   };
 
-  const tableHeaderStyle = "px-6 py-4 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-800";
+  const tableHeaderStyle = "px-6 py-4 text-left text-sm font-black text-slate-400 uppercase tracking-widest border-b border-slate-800";
   const tableDataStyle = "px-6 py-4 text-sm font-bold text-slate-300 border-b border-slate-800/50";
   const tableRowStyle = "hover:bg-slate-800/30 transition-colors";
 
@@ -227,7 +227,7 @@ const Complaints = () => {
                       <td className={tableDataStyle}>{idx + 1}</td>
                       <td className={tableDataStyle}>{row.year}</td>
                       <td className={tableDataStyle}>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-black uppercase">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-black uppercase">
                           <CheckCircle size={12} /> {row.status}
                         </span>
                       </td>
@@ -250,7 +250,7 @@ const Complaints = () => {
             </div>
             <div className="flex items-center gap-3 bg-white/5 px-6 py-3 rounded-2xl border border-white/10 shrink-0">
               <FileText size={18} className="text-blue-400" />
-              <span className="text-xs font-black uppercase tracking-widest text-slate-300">Last Updated: March 2026</span>
+              <span className="text-sm font-black uppercase tracking-widest text-slate-300">Last Updated: March 2026</span>
             </div>
           </div>
         </motion.div>

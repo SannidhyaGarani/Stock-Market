@@ -49,7 +49,7 @@ const RefundPolicy = () => {
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/30 blur-[60px] group-hover:bg-blue-600/50 transition-colors" />
               <HelpCircle size={32} className="text-blue-400 mb-6" />
-              <h3 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Our Philosophy</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">Our Philosophy</h3>
               <h4 className="text-2xl font-bold mb-4">Service Commitment</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
@@ -74,7 +74,7 @@ const RefundPolicy = () => {
                   All sales are final. Before proceeding with any active subscriptions, please ensure that our listed products and services perfectly meet your investment needs.
                 </p>
               </div>
-              <div className="p-4 bg-[#F8FAFC] border border-slate-50 rounded-xl text-xs text-slate-400 font-medium">
+              <div className="p-4 bg-[#F8FAFC] border border-slate-50 rounded-xl text-sm text-slate-400 font-medium">
                 Detailed terms are mapped out in the general Terms & Conditions document.
               </div>
             </motion.div>
@@ -139,7 +139,7 @@ const RefundPolicy = () => {
                   ].map((item, idx) => (
                     <div key={idx} className="bg-white p-4 rounded-xl border border-emerald-50 flex gap-3 items-start">
                       <RefreshCcw size={14} className="text-emerald-600 mt-1 flex-shrink-0" />
-                      <p className="text-xs font-bold text-slate-700">{item}</p>
+                      <p className="text-sm font-bold text-slate-700">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -153,7 +153,7 @@ const RefundPolicy = () => {
 
       {/* 3. SUB FOOTER */}
       <footer className="py-10 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
           <p>© 2026 HighRise Research. All Rights Reserved.</p>
           <div className="flex gap-6">
             <p className="text-slate-400 font-bold uppercase tracking-widest">Trust & Transparency</p>

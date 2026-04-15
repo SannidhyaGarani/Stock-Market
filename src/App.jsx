@@ -24,6 +24,8 @@ import Disclaimer from "./pages/Disclamer.jsx";
 import Complaints from "./pages/Complaints.jsx";
 import KYC from "./pages/KYC.jsx";
 import Alerts from "./pages/Alerts.jsx";
+import WhatsAppButton from "./Components/WhatsAppButton.jsx";
+import PopupForm from "./Components/PopupForm.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +47,8 @@ function App() {
   return (
     <>
       {!isAdminPage && <Header />}
+      {!isAdminPage && <WhatsAppButton />}
+      {!isAdminPage && <PopupForm />}
       <ScrollToTop />
 
       <Routes>

@@ -20,6 +20,8 @@ const Admin = () => {
   const [currentTab, setCurrentTab] = useState("services");
   const [kycSubmissions, setKycSubmissions] = useState([]);
   const [isFetchingKyc, setIsFetchingKyc] = useState(false);
+  const [consultations, setConsultations] = useState([]);
+  const [isFetchingConsultations, setIsFetchingConsultations] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -42,6 +44,9 @@ const Admin = () => {
   const [fullDesc, setFullDesc] = useState("");
   const [features, setFeatures] = useState([""]);
   const [indexNumber, setIndexNumber] = useState("");
+  const [monthlyPrice, setMonthlyPrice] = useState("");
+  const [quarterlyPrice, setQuarterlyPrice] = useState("");
+  const [halfYearlyPrice, setHalfYearlyPrice] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -51,6 +56,7 @@ const Admin = () => {
     fetchServices();
     fetchContacts();
     fetchKyc();
+    fetchConsultations();
   }, []);
 
   const fetchKyc = async () => {
@@ -64,6 +70,31 @@ const Admin = () => {
       console.error("Error fetching KYC:", error);
     } finally {
       setIsFetchingKyc(false);
+    }
+  };
+
+  const fetchConsultations = async () => {
+    setIsFetchingConsultations(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, "consultations"));
+      const consultationData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      consultationData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+      setConsultations(consultationData);
+    } catch (error) {
+      console.error("Error fetching consultations:", error);
+    } finally {
+      setIsFetchingConsultations(false);
+    }
+  };
+
+  const deleteConsultation = async (id) => {
+    if (window.confirm("Delete this consultation lead?")) {
+      try {
+        await deleteDoc(doc(db, "consultations", id));
+        fetchConsultations();
+      } catch (error) {
+        console.error("Error deleting consultation:", error);
+      }
     }
   };
 
@@ -126,6 +157,9 @@ const Admin = () => {
     setFullDesc(service.fullDesc);
     setFeatures(service.features && service.features.length > 0 ? service.features : [""]);
     setIndexNumber(service.indexNumber || "");
+    setMonthlyPrice(service.monthlyPrice || "");
+    setQuarterlyPrice(service.quarterlyPrice || "");
+    setHalfYearlyPrice(service.halfYearlyPrice || "");
     setExistingImageUrl(service.imageUrl || "");
     setImagePreview(service.imageUrl || null);
     setImage(null);
@@ -139,6 +173,9 @@ const Admin = () => {
     setFullDesc("");
     setFeatures([""]);
     setIndexNumber("");
+    setMonthlyPrice("");
+    setQuarterlyPrice("");
+    setHalfYearlyPrice("");
     setImage(null);
     setImagePreview(null);
     setExistingImageUrl("");
@@ -218,6 +255,9 @@ const Admin = () => {
         fullDesc,
         features: validFeatures,
         indexNumber: indexNumber ? Number(indexNumber) : 0,
+        monthlyPrice,
+        quarterlyPrice,
+        halfYearlyPrice,
         imageUrl,
         updatedAt: serverTimestamp(),
       };
@@ -284,6 +324,16 @@ const Admin = () => {
             <ShieldAlert size={20} />
             KYC Submissions
             {kycSubmissions.length > 0 && <span className="ml-auto w-5 h-5 bg-blue-500 rounded-full text-[10px] flex items-center justify-center">{kycSubmissions.length}</span>}
+          </button>
+          <button 
+            onClick={() => setCurrentTab("consultations")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
+              currentTab === "consultations" ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "text-slate-400 hover:bg-slate-800 hover:text-white"
+            }`}
+          >
+            <MessageSquare size={20} />
+            Consultation Leads
+            {consultations.length > 0 && <span className="ml-auto w-5 h-5 bg-amber-500 rounded-full text-[10px] flex items-center justify-center">{consultations.length}</span>}
           </button>
         </nav>
 
@@ -373,6 +423,39 @@ const Admin = () => {
                       onChange={(e) => setIndexNumber(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
                       placeholder="e.g. 1"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Monthly Price (₹)</label>
+                    <input 
+                      type="text" 
+                      value={monthlyPrice}
+                      onChange={(e) => setMonthlyPrice(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+                      placeholder="e.g. 2,499"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Quarterly Price (₹)</label>
+                    <input 
+                      type="text" 
+                      value={quarterlyPrice}
+                      onChange={(e) => setQuarterlyPrice(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+                      placeholder="e.g. 6,499"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Half Yearly Price (₹)</label>
+                    <input 
+                      type="text" 
+                      value={halfYearlyPrice}
+                      onChange={(e) => setHalfYearlyPrice(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+                      placeholder="e.g. 10,999"
                     />
                   </div>
                 </div>
@@ -638,6 +721,89 @@ const Admin = () => {
                           <p className="text-sm font-medium text-slate-700 leading-relaxed italic line-clamp-4">
                             "{contact.message}"
                           </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ) : currentTab === "consultations" ? (
+              <motion.div 
+                key="consultations"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-8"
+              >
+                <div>
+                  <h1 className="text-4xl font-black text-slate-900 tracking-tight">Consultation Leads</h1>
+                  <p className="text-slate-500 font-medium">Inquiries from the popup and service buttons</p>
+                </div>
+
+                {isFetchingConsultations ? (
+                  <div className="flex justify-center p-20"><Loader2 className="animate-spin text-blue-600" size={40} /></div>
+                ) : consultations.length === 0 ? (
+                  <div className="bg-white border border-slate-100 rounded-[2rem] p-20 text-center shadow-sm">
+                    <MessageSquare size={48} className="mx-auto text-slate-200 mb-4" />
+                    <p className="text-slate-500 font-bold">No consultation leads yet.</p>
+                  </div>
+                ) : (
+                  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {consultations.map((lead) => (
+                      <motion.div 
+                        key={lead.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all flex flex-col group"
+                      >
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center">
+                            <MessageSquare size={24} />
+                          </div>
+                          <button 
+                            onClick={() => deleteConsultation(lead.id)}
+                            className="w-10 h-10 rounded-xl bg-red-50 text-red-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
+
+                        <div className="space-y-4 mb-6">
+                          <div>
+                            <h4 className="text-lg font-black text-slate-900">{lead.name}</h4>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[8px] px-2 py-0.5 bg-blue-50 text-blue-600 font-black uppercase rounded-full">Lead</span>
+                              <span className="text-[8px] px-2 py-0.5 bg-slate-50 text-slate-500 font-black uppercase rounded-full">Source: {lead.source === '/' ? 'Home' : 'Service'}</span>
+                            </div>
+                          </div>
+
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3 text-slate-500">
+                              <Phone size={14} className="shrink-0" />
+                              <span className="text-sm font-bold">{lead.mobile}</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-500">
+                              <Mail size={14} className="shrink-0" />
+                              <span className="text-sm font-bold truncate">{lead.email}</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-400">
+                              <Clock size={14} className="shrink-0" />
+                              <span className="text-[10px] font-black uppercase tracking-wider">
+                                {lead.timestamp ? new Date(lead.timestamp.seconds * 1000).toLocaleString() : "Recently"}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-auto">
+                          <a 
+                            href={`https://wa.me/91${lead.mobile?.replace(/\D/g,'')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-3 bg-emerald-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all"
+                          >
+                            Reply on WhatsApp
+                          </a>
                         </div>
                       </motion.div>
                     ))}

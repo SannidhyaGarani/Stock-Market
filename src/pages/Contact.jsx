@@ -33,9 +33,18 @@ const Contact = () => {
         ...formData,
         timestamp: serverTimestamp(),
       });
+      
+      const whatsappMessage = `Hello, I have a message for HighRise Research: \n\n*Name:* ${formData.fullName}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Message:* ${formData.message}`;
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/919098693674?text=${encodedMessage}`;
+
       setSuccess(true);
       setFormData({ fullName: '', phone: '', email: '', message: '' });
-      setTimeout(() => setSuccess(false), 5000);
+      
+      setTimeout(() => {
+        window.location.href = whatsappUrl;
+        setSuccess(false);
+      }, 1000);
     } catch (error) {
       console.error("Error submitting contact form: ", error);
       alert("Something went wrong. Please try again.");

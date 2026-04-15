@@ -13,8 +13,8 @@ const About = () => {
 
   return (
     <main className="bg-white text-slate-900">
-      <PageHero 
-        title="Our Story." 
+      <PageHero
+        title="Our Story."
         subtitle="Empowering Retail Traders with Institutional Grade Research"
         backgroundImage="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop"
       />
@@ -38,19 +38,19 @@ const About = () => {
             </p>
             <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
               <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-              <p className="text-sm font-bold text-slate-700">SEBI Registered Research Analyst - INH000000000</p>
+              <p className="text-sm font-bold text-slate-700">SEBI Registration Research Analyst - INH000000000</p>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative"
           >
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1591696208162-a97749f02bc0?q=80&w=2070&auto=format&fit=crop" 
-                alt="Our Workspace" 
+              <img
+                src="https://images.unsplash.com/photo-1591696208162-a97749f02bc0?q=80&w=2070&auto=format&fit=crop"
+                alt="Our Workspace"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -68,7 +68,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const About = () => {
               { title: 'Precision', desc: 'Our strategies are backed by rigorous quantitative analysis and institutional-grade tools.', icon: <Target size={32} /> },
               { title: 'Empowerment', desc: 'We don\'t just provide tips; we educate our clients to become independent traders.', icon: <Users size={32} /> },
             ].map((value, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 whileHover={{ y: -10 }}
                 className="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-sm"

@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingUp, Users, ShieldCheck, BarChart3 } from "lucide-react";
+import { TrendingUp, Users, ShieldCheck, BarChart3, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Stats = () => {
@@ -44,12 +44,12 @@ const Stats = () => {
       glow: "group-hover:shadow-indigo-500/10",
     },
     {
-      icon: ShieldCheck,
-      value: "SEBI Reg.",
-      label: "INH000009427",
-      color: "text-emerald-600",
-      bg: "bg-emerald-50",
-      glow: "group-hover:shadow-emerald-500/10",
+      icon: Zap,
+      value: "Real-time",
+      label: "Instant Alerts",
+      color: "text-amber-600",
+      bg: "bg-amber-50",
+      glow: "group-hover:shadow-amber-500/10",
     },
     {
       icon: ShieldCheck,

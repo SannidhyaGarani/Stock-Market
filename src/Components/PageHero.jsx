@@ -59,17 +59,7 @@ const PageHero = ({ title, subtitle, backgroundImage, className = '' }) => {
             </div>
           </div>
 
-          <div className="h-8 w-[1px] bg-white/10 hidden md:block" />
-
-          <div className="group flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-blue-500 transition-colors">
-              <span className="text-[10px] font-bold text-blue-500">SEBI</span>
-            </div>
-            <div>
-              <p className="text-[14px] font-bold text-white/40 uppercase tracking-widest leading-none mb-1">Credential</p>
-              <p className="text-[15px] font-semibold text-white tracking-tight">Reg. INH000009427</p>
-            </div>
-          </div>
+          
         </div>
       </div>
 

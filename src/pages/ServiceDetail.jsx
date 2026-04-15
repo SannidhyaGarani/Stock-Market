@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../Firebase';
 import { motion } from 'framer-motion';
-import { CheckSquare } from 'lucide-react';
+import { CheckSquare, CreditCard, ChevronRight, Zap, Target, ShieldCheck } from 'lucide-react';
 import PageHero from '../Components/PageHero';
+import { Link } from 'react-router-dom';
 
 const ServiceDetail = () => {
   const { id } = useParams();
@@ -57,7 +58,7 @@ const ServiceDetail = () => {
           <p className="text-lg text-slate-600 leading-relaxed mb-8 whitespace-pre-wrap">{service.fullDesc}</p>
           
           <h3 className="text-2xl font-bold text-slate-900 mb-6 pt-6 border-t border-slate-200">Key Features</h3>
-          <ul className="space-y-4">
+          <ul className="space-y-4 mb-10">
             {service.features && service.features.map((feature, index) => (
               <motion.li 
                 key={index}
@@ -67,12 +68,104 @@ const ServiceDetail = () => {
                 className="flex items-start gap-4"
               >
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <CheckSquare size={20} />
+                  <CheckSquare size={18} />
                 </div>
-                <span className="text-slate-700 text-lg">{feature}</span>
+                <span className="text-slate-700 text-lg leading-relaxed">{feature}</span>
               </motion.li>
             ))}
           </ul>
+
+          {/* Pricing Section Nested in the Detail Card or below? Let's put it as a distinct section with cards */}
+          <div className="pt-12 border-t border-slate-200">
+             <div className="flex items-center justify-between mb-10">
+                <div>
+                   <h3 className="text-3xl font-black text-slate-900 tracking-tight">Access Premium Research</h3>
+                   <p className="text-slate-500 font-medium">Choose a plan that fits your trading style</p>
+                </div>
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">
+                    <ShieldCheck size={16} />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Secure Activation</span>
+                </div>
+             </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                   { name: "Monthly", price: "₹2,499", duration: "1 Month", desc: "Best for trying our accuracy", color: "blue", highlight: false },
+                   { name: "Quarterly", price: "₹6,499", duration: "3 Months", desc: "Most popular for beginners", color: "indigo", highlight: true, save: "15% Save" },
+                   { name: "Half Yearly", price: "₹10,999", duration: "6 Months", desc: "Institutional grade focus", color: "slate", highlight: false, save: "25% Save" },
+                ].map((plan, i) => (
+                   <motion.div
+                     key={i}
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ delay: 0.2 + i * 0.1 }}
+                     whileHover={{ y: -8 }}
+                     className={`relative group p-6 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
+                        plan.highlight 
+                        ? "bg-slate-900 border-slate-900 shadow-2xl shadow-blue-900/10 text-white" 
+                        : "bg-slate-50 border-slate-200 hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 text-slate-900"
+                     }`}
+                   >
+                      {plan.save && (
+                         <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${plan.highlight ? "bg-blue-600 text-white" : "bg-emerald-100 text-emerald-700"}`}>
+                            {plan.save}
+                         </div>
+                      )}
+                      
+                      <div className="mb-8">
+                         <p className={`text-[10px] font-black uppercase tracking-[0.2em] mb-4 ${plan.highlight ? "text-blue-400" : "text-blue-600"}`}>
+                            {plan.name}
+                         </p>
+                         <h4 className="text-4xl font-black tracking-tighter mb-1">
+                            {plan.price}
+                         </h4>
+                         <p className={`text-xs font-bold ${plan.highlight ? "text-slate-400" : "text-slate-500"}`}>
+                            per {plan.duration}
+                         </p>
+                      </div>
+
+                      <p className={`text-sm mb-8 font-medium leading-relaxed ${plan.highlight ? "text-slate-400" : "text-slate-500"}`}>
+                         {plan.desc}
+                      </p>
+
+                      <Link to="/contact">
+                         <motion.button
+                           whileHover={{ scale: 1.02 }}
+                           whileTap={{ scale: 0.98 }}
+                           className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${
+                              plan.highlight 
+                              ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20" 
+                              : "bg-slate-900 text-white hover:bg-blue-600"
+                           }`}
+                         >
+                            Start Research
+                         </motion.button>
+                      </Link>
+                   </motion.div>
+                ))}
+             </div>
+
+             <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 pt-10 border-t border-slate-100">
+                <div className="flex items-center gap-3">
+                   <Target className="text-blue-600" size={24} />
+                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 leading-tight">
+                      Institutional <br /> Accuracy
+                   </p>
+                </div>
+                <div className="flex items-center gap-3">
+                   <Zap className="text-amber-500" size={24} />
+                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 leading-tight">
+                      Real-Time <br /> Execution
+                   </p>
+                </div>
+                <div className="flex items-center gap-3">
+                   <CreditCard className="text-indigo-600" size={24} />
+                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 leading-tight">
+                      Secure <br /> Onboarding
+                   </p>
+                </div>
+             </div>
+          </div>
         </motion.div>
       </div>
     </main>

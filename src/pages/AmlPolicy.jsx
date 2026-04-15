@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../Components/PageHero';
-import { 
-  ShieldAlert, Fingerprint, Search, FileWarning, 
-  Users, Activity, CreditCard, BarChart3, Globe, ExternalLink 
+import {
+  ShieldAlert, Fingerprint, Search, FileWarning,
+  Users, Activity, CreditCard, BarChart3, Globe, ExternalLink
 } from 'lucide-react';
 
 const AMLPolicy = () => {
@@ -23,9 +23,9 @@ const AMLPolicy = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen font-sans antialiased text-slate-900 pb-20">
-      
+
       {/* 1. HERO SECTION */}
-      <PageHero 
+      <PageHero
         title="AML Policy"
         subtitle="Provisions, frameworks, and strict protocols aligned with the Prevention of Money Laundering Act, 2002."
         backgroundImage="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
@@ -34,16 +34,16 @@ const AMLPolicy = () => {
       {/* 2. CORE BENTO GRID CONTENT */}
       <section className="pb-16 pt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            
+
             {/* CARD 1: PMLA 2002 Core Framework (Large Accent Card) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-8 p-10 bg-slate-900 text-white rounded-[2.5rem] relative overflow-hidden group shadow-xl"
               variants={itemVariants}
             >
@@ -63,7 +63,7 @@ const AMLPolicy = () => {
 
 
             {/* CARD 2: FIU-IND Role */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col justify-between"
               variants={itemVariants}
             >
@@ -81,7 +81,7 @@ const AMLPolicy = () => {
 
 
             {/* CARD 3: Definition of Suspicious Transactions */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-12 p-10 bg-white border border-slate-100 rounded-[2.5rem] relative overflow-hidden"
               variants={itemVariants}
             >
@@ -96,7 +96,7 @@ const AMLPolicy = () => {
                     Defined under Section 2 (1) (g) of PMLA Rules. Transactions are flagged if a person acting in good faith notes specific red flags.
                   </p>
                 </div>
-                
+
                 <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {[
                     "Proceeds of crime: Reasonable grounds pointing to potential crime asset utilization.",
@@ -121,7 +121,7 @@ const AMLPolicy = () => {
       {/* 3. SUSPICIOUS TRANSACTION EXAMPLES (Stacked Cards instead of clunky table) */}
       <section className="pb-24 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center mb-12">
             <p className="text-xs font-black tracking-widest text-blue-600 uppercase mb-3">Red Flags</p>
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 mb-4">Examples of Suspicious Transactions</h2>
@@ -131,7 +131,7 @@ const AMLPolicy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
+
             {/* Category 1 */}
             <div className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:border-blue-100 transition-colors">
               <Fingerprint className="text-blue-600 mb-4" size={24} />
@@ -204,7 +204,7 @@ const AMLPolicy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
           <div>
             <p className="text-slate-900 font-black">HighRise Research</p>
-            <p>SEBI Registered Research Analyst | Reg No. INH000000000</p>
+            <p>SEBI Registration Research Analyst | Reg No. INH000000000</p>
           </div>
           <div className="flex gap-6 flex-shrink-0">
             <p className="text-slate-400 font-bold uppercase tracking-widest">Compliance First</p>

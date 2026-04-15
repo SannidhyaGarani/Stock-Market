@@ -20,7 +20,7 @@
 //         <div className="relative group mx-auto max-w-2xl">
 //           {/* Animated Glow Border */}
 //           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-amber-400 to-indigo-600 rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-          
+
 //           <div className="relative bg-white border border-slate-100 rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden">
 //             {/* Watermark Icon */}
 //             <ShieldCheck className="absolute -right-8 -bottom-8 text-slate-50/50 w-64 h-64 -rotate-12" />
@@ -30,9 +30,9 @@
 //                 <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full flex items-center justify-center text-white shadow-lg mb-6 shadow-amber-200/50">
 //                   <Award size={40} />
 //                 </div>
-                
+
 //                 <h3 className="text-2xl font-black text-slate-900 uppercase tracking-widest mb-2">
-//                   SEBI Registered Research Analyst
+//                   SEBI Registration Research Analyst
 //                 </h3>
 //                 <div className="h-1 w-20 bg-blue-600 rounded-full mb-8"></div>
 
@@ -71,7 +71,7 @@
 
 // export default TrustSection;
 
-import React from "react";
+import { Link } from "react-router-dom";
 import {
   Target,
   ShieldCheck,
@@ -113,7 +113,7 @@ const WhyChooseUs = () => {
     {
       icon: ShieldCheck,
       color: "text-emerald-600",
-      title: "SEBI Registered",
+      title: "SEBI Registration",
       desc: "Fully compliant advisory ensuring trust & transparency.",
       size: "lg:col-span-4",
     },
@@ -248,16 +248,18 @@ const WhyChooseUs = () => {
                 </p>
               </div>
 
-              <motion.button
-                whileHover={{
-                  scale: 1.08,
-                  boxShadow: "0px 0px 25px rgba(59,130,246,0.6)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-blue-600 text-white rounded-full font-black text-sm uppercase tracking-widest transition-all"
-              >
-                Join Premium
-              </motion.button>
+              <Link to="/services">
+                <motion.button
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: "0px 0px 25px rgba(59,130,246,0.6)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 bg-blue-600 text-white rounded-full font-black text-sm uppercase tracking-widest transition-all"
+                >
+                  Join Premium
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

@@ -25,7 +25,7 @@ const InvestorCharter = () => {
     <div className="bg-[#F8FAFC] min-h-screen font-sans antialiased text-slate-900">
       <PageHero
         title="Investor Charter"
-        subtitle="Your Rights and Our Responsibilities as a SEBI Registered Research Analyst."
+        subtitle="Your Rights and Our Responsibilities as a SEBI Registration Research Analyst."
         backgroundImage="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop"
       />
 
@@ -313,7 +313,7 @@ const InvestorCharter = () => {
                   The Do's
                 </h4>
                 <ul className="space-y-3 text-sm font-medium text-slate-600">
-                  <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Always deal with SEBI registered Research Analysts.</li>
+                  <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Always deal with SEBI Registration Research Analysts.</li>
                   <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Pay Research Analysts through secure banking channels only.</li>
                   <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Clear all doubts before acting on recommendations.</li>
                   <li className="flex gap-2 items-start"><CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" /> Inform SEBI about RAs offering assured returns.</li>

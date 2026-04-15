@@ -41,10 +41,10 @@ const Footer = () => {
   return (
     <footer className="bg-[#020617] text-slate-300 pt-20 pb-8 font-sans border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Top Section: Brand and Primary Info */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800/60">
-          
+
           {/* Brand Identity */}
           <div className="lg:col-span-4 space-y-6">
             <Link to="/" className="flex items-center gap-3 group">
@@ -55,10 +55,10 @@ const Footer = () => {
                 <h2 className="text-2xl font-bold text-white tracking-tight">
                   HighRise <span className="text-blue-500">Research</span>
                 </h2>
-                <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">SEBI Registered Analyst</p>
+                <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">SEBI Registration Analyst</p>
               </div>
             </Link>
-            
+
             <p className="text-base leading-relaxed text-slate-300 max-w-sm">
               Delivering institutional-grade market research and algorithmic strategies to empower the modern retail investor.
             </p>
@@ -116,7 +116,7 @@ const Footer = () => {
                 <MapPin size={20} className="text-blue-500 shrink-0 mt-0.5" />
                 <p className="text-sm leading-6 text-slate-200">A-172 Kanak Avenue Colony, Lasudiya Mori, Indore, MP - 452010</p>
               </div>
-              
+
               <div className="space-y-3 pt-2">
                 <div className="flex items-center gap-3">
                   <Phone size={18} className="text-blue-500 shrink-0" />
@@ -185,7 +185,7 @@ const Footer = () => {
                 Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, membership of BASL and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
               </p>
             </div>
-            
+
           </div>
         </div>
 

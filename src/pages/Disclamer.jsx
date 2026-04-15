@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../Components/PageHero';
-import { 
-  AlertTriangle, ShieldCheck, FileText, 
-  WifiOff, PhoneCall, Scale, Lock, Globe 
+import {
+  AlertTriangle, ShieldCheck, FileText,
+  WifiOff, PhoneCall, Scale, Lock, Globe
 } from 'lucide-react';
 
 const Disclaimer = () => {
@@ -23,9 +23,9 @@ const Disclaimer = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen font-sans antialiased text-slate-900 pb-20">
-      
+
       {/* 1. HERO SECTION */}
-      <PageHero 
+      <PageHero
         title="Legal Disclaimer"
         subtitle="Please read these terms of service, non-responsibility statements, and regulatory disclosures carefully."
         backgroundImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop"
@@ -34,16 +34,16 @@ const Disclaimer = () => {
       {/* 2. CORE BENTO GRID CONTENT */}
       <section className="pb-24 pt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            
+
             {/* CARD 1: SEBI Registration & Core Identity (Large Accent Card) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-8 p-10 bg-slate-900 text-white rounded-[2.5rem] relative overflow-hidden group shadow-xl"
               variants={itemVariants}
             >
@@ -53,7 +53,7 @@ const Disclaimer = () => {
               <h4 className="text-2xl font-bold mb-4">HighRise Research</h4>
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
-                  We are SEBI registered as a Research Entity under SEBI (Research Analyst) Regulations, 2014. <span className="text-white font-bold">SEBI Research Analyst No: INH000009427</span>.
+                  We are SEBI Registration as a Research Entity under SEBI (Research Analyst) Regulations, 2014. <span className="text-white font-bold">SEBI Research Analyst No: INH000009427</span>.
                 </p>
                 <p>
                   We are also enlisted with BSE under the <span className="text-white font-bold">BSE Enlistment No: 5543</span>.
@@ -66,7 +66,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 2: Quick Notice / CTA style */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col justify-between"
               variants={itemVariants}
             >
@@ -84,7 +84,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 3: Nature of Research Information */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-6 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm"
               variants={itemVariants}
             >
@@ -101,7 +101,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 4: Technological Risks (SMS & Internet) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-6 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm relative overflow-hidden"
               variants={itemVariants}
             >
@@ -118,7 +118,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 5: Client Obligations (Strict Privacy Notice) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-5 p-8 bg-white border border-rose-100 rounded-[2rem] shadow-sm relative overflow-hidden"
               variants={itemVariants}
             >
@@ -136,7 +136,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 6: Consent to Communication & DND Override */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-7 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm"
               variants={itemVariants}
             >
@@ -152,7 +152,7 @@ const Disclaimer = () => {
 
 
             {/* CARD 7: Jurisdiction & Legal Authority (Full Width Accent) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-12 p-10 bg-[#F8FAFC] border border-slate-100 rounded-[2.5rem] relative overflow-hidden"
               variants={itemVariants}
             >
@@ -173,7 +173,7 @@ const Disclaimer = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-2xl border border-slate-100 flex items-center justify-center flex-col text-center">
                   <AlertTriangle size={24} className="text-amber-500 mb-2" />
                   <p className="text-xs font-black text-slate-900 uppercase tracking-widest mb-1">Notice</p>

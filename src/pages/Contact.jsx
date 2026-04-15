@@ -108,7 +108,7 @@ const Contact = () => {
             <div className="flex flex-col gap-3 p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
               <div className="flex items-center gap-3">
                 <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-                <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">SEBI Registered Research Analyst - INH000009427</p>
+                <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">SEBI Registration Research Analyst - INH000009427</p>
               </div>
               <div className="flex items-center gap-3 pt-3 border-t border-emerald-200/50">
                 <Building2 className="text-emerald-500 shrink-0" size={20} />
@@ -182,7 +182,7 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button 
+              <button
                 type="submit"
                 disabled={loading}
                 className="w-full bg-slate-900 text-white font-black py-5 rounded-2xl hover:bg-blue-600 transition-all shadow-xl shadow-slate-900/10 active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
@@ -196,7 +196,7 @@ const Contact = () => {
 
               <AnimatePresence>
                 {success && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}

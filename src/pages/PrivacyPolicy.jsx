@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../Components/PageHero';
-import { 
-  ShieldCheck, Lock, HardDrive, BellRing, 
+import {
+  ShieldCheck, Lock, HardDrive, BellRing,
   Smartphone, MessageSquareHeart, UserCheck, Scale
 } from 'lucide-react';
 
@@ -23,9 +23,9 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen font-sans antialiased text-slate-900 pb-20">
-      
+
       {/* 1. HERO SECTION */}
-      <PageHero 
+      <PageHero
         title="Privacy Policy"
         subtitle="We understand the confidentiality of your personal information and maintain it forever."
         backgroundImage="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
@@ -34,16 +34,16 @@ const PrivacyPolicy = () => {
       {/* 2. CORE BENTO GRID CONTENT */}
       <section className="pb-24 pt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            
+
             {/* CARD 1: Core Commitment (Large Accent Card) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-7 p-10 bg-slate-900 text-white rounded-[2.5rem] relative overflow-hidden group shadow-xl"
               variants={itemVariants}
             >
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
 
 
             {/* CARD 2: Physical & Electronic Safeguards */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-5 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col justify-between"
               variants={itemVariants}
             >
@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
 
 
             {/* CARD 3: No Selling / Renting Clause */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4 p-8 bg-white border border-emerald-100 rounded-[2rem] shadow-sm relative overflow-hidden"
               variants={itemVariants}
             >
@@ -97,7 +97,7 @@ const PrivacyPolicy = () => {
 
 
             {/* CARD 4: Purpose of Use */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm"
               variants={itemVariants}
             >
@@ -112,7 +112,7 @@ const PrivacyPolicy = () => {
 
 
             {/* CARD 5: Voluntary Feedback & Polls */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-4 p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm"
               variants={itemVariants}
             >
@@ -127,7 +127,7 @@ const PrivacyPolicy = () => {
 
 
             {/* CARD 6: Communications & DND Override (Full Width Accent) */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-12 p-10 bg-[#F8FAFC] border border-blue-100 rounded-[2.5rem] relative overflow-hidden"
               variants={itemVariants}
             >
@@ -142,7 +142,7 @@ const PrivacyPolicy = () => {
                     By submitting your active details on this site, you acknowledge and agree to our direct outreach protocols.
                   </p>
                 </div>
-                
+
                 <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-5 rounded-xl border border-slate-100">
                     <div className="flex items-center gap-2 mb-2">
@@ -153,7 +153,7 @@ const PrivacyPolicy = () => {
                       Registering implies you are authorizing us to reach out via SMS and voice calls whenever natively needed to properly facilitate your active services.
                     </p>
                   </div>
-                  
+
                   <div className="bg-white p-5 rounded-xl border border-slate-100">
                     <div className="flex items-center gap-2 mb-2">
                       <Scale size={16} className="text-blue-600" />
@@ -180,7 +180,7 @@ const PrivacyPolicy = () => {
             <p>© 2026 All Rights Reserved.</p>
           </div>
           <div className="flex gap-6 flex-shrink-0">
-            <p className="text-slate-400 font-bold uppercase">SEBI Registered Research Analyst</p>
+            <p className="text-slate-400 font-bold uppercase">SEBI Registration Research Analyst</p>
           </div>
         </div>
       </footer>

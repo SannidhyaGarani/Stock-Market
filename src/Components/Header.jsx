@@ -48,18 +48,18 @@ const Navbar = () => {
   // Framer Motion Variants for Mobile Menu
   const mobileMenuVariants = {
     hidden: { opacity: 0, y: -15, scale: 0.98 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       scale: 1,
-      transition: { 
-        type: "spring", stiffness: 400, damping: 30, 
-        staggerChildren: 0.05, delayChildren: 0.1 
+      transition: {
+        type: "spring", stiffness: 400, damping: 30,
+        staggerChildren: 0.05, delayChildren: 0.1
       }
     },
-    exit: { 
-      opacity: 0, 
-      y: -10, 
+    exit: {
+      opacity: 0,
+      y: -10,
       scale: 0.98,
       transition: { duration: 0.2 }
     }
@@ -78,16 +78,16 @@ const Navbar = () => {
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
         className={`relative w-full max-w-7xl pointer-events-auto transition-colors duration-500
           ${isScrolled || isOpen
-            ? 'bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] rounded-[2rem]' 
+            ? 'bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] rounded-[2rem]'
             : 'bg-transparent border-transparent'
           }`}
       >
         <div className="flex items-center justify-between px-4 py-3 md:px-6">
-          
+
           {/* Brand Identity */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative">
-              <motion.div 
+              <motion.div
                 whileHover={{ rotate: 15, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400 }}
                 className="w-10 h-10 md:w-11 md:h-11 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-500/30"
@@ -101,16 +101,16 @@ const Navbar = () => {
                 HIGH<span className="text-blue-600">RISE</span>
               </span>
               <span className="text-[9px] md:text-[10px] font-bold tracking-wider text-slate-500 flex items-center gap-1 uppercase mt-1">
-                <ShieldCheck size={12} className="text-emerald-500" /> SEBI Registered
+                <ShieldCheck size={12} className="text-emerald-500" /> SEBI Registration
               </span>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center bg-slate-100/60 p-1.5 rounded-full border border-slate-200/60 backdrop-blur-md">
             {navLinks.map((link) => (
               link.name === 'Research' ? (
-                <motion.div 
+                <motion.div
                   key={link.name}
                   className="relative"
                   onHoverStart={() => setIsServicesHovered(true)}
@@ -126,7 +126,7 @@ const Navbar = () => {
                   </Link>
                   <AnimatePresence>
                     {isServicesHovered && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -134,8 +134,8 @@ const Navbar = () => {
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2"
                       >
                         {services.map(service => (
-                          <Link 
-                            key={service.id} 
+                          <Link
+                            key={service.id}
                             to={`/services/${service.id}`}
                             className="block px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 rounded-lg transition-colors"
                           >
@@ -147,7 +147,7 @@ const Navbar = () => {
                   </AnimatePresence>
                 </motion.div>
               ) : link.name === 'More' ? (
-                <motion.div 
+                <motion.div
                   key={link.name}
                   className="relative"
                   onHoverStart={() => setIsPoliciesHovered(true)}
@@ -160,7 +160,7 @@ const Navbar = () => {
                   </div>
                   <AnimatePresence>
                     {isPoliciesHovered && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -168,8 +168,8 @@ const Navbar = () => {
                         className="absolute top-full right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-2"
                       >
                         {policyLinks.map(policy => (
-                          <Link 
-                            key={policy.name} 
+                          <Link
+                            key={policy.name}
                             to={policy.href}
                             className="block px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-600 rounded-lg transition-colors"
                           >
@@ -209,9 +209,9 @@ const Navbar = () => {
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-600 rounded-full animate-pulse border-2 border-white"></span>
               </Link>
             </motion.div>
-            
+
             <Link to="/contact" className="hidden sm:block">
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative group px-6 py-2.5 bg-slate-900 text-white rounded-full overflow-hidden"
@@ -219,9 +219,9 @@ const Navbar = () => {
                 {/* Shimmer Effect */}
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite] z-0" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
-                
+
                 <span className="relative z-10 flex items-center gap-2 text-sm font-bold tracking-wide">
-                 Contact us
+                  Contact us
                   <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </motion.button>
@@ -246,7 +246,7 @@ const Navbar = () => {
         {/* Mobile Dropdown Menu */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
+            <motion.div
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
@@ -288,7 +288,7 @@ const Navbar = () => {
                     )}
                   </motion.div>
                 ))}
-              
+
                 <motion.div variants={mobileItemVariants} className="pt-4 mt-2 border-t border-slate-100 px-2 pb-2">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>
                     <button className="w-full flex items-center justify-center gap-2 py-4 bg-slate-900 text-white font-bold rounded-2xl shadow-xl shadow-slate-900/20 active:scale-[0.98] transition-all">
@@ -303,7 +303,8 @@ const Navbar = () => {
       </motion.nav>
 
       {/* Global Style for the shimmer effect */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes shimmer {
           100% { transform: translateX(100%); }
         }

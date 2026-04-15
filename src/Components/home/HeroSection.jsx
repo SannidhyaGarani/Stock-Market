@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Play, ArrowRight, ShieldCheck, BarChart3, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -86,8 +86,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600"
               variants={itemVariants}
             >
-              <ShieldCheck size={16} />
-              <span className="text-xs font-black uppercase tracking-widest">SEBI Registered: INH000009427</span>
+              <span className="text-xs font-black uppercase tracking-widest"></span>
             </motion.div>
 
             <motion.h1
@@ -112,37 +111,41 @@ const Hero = () => {
               className="flex flex-wrap gap-4 pt-4"
               variants={itemVariants}
             >
-              <motion.button
-                className="relative px-8 py-4 bg-slate-900 text-white rounded-full font-bold flex items-center gap-2 overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-blue-200/40"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Shine effect */}
-                <span className="absolute inset-0 overflow-hidden rounded-full">
-                  <span className="absolute -left-full top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700" />
-                </span>
+              <Link to="/services">
+                <motion.button
+                  className="relative px-8 py-4 bg-slate-900 text-white rounded-full font-bold flex items-center gap-2 overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-blue-200/40"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Shine effect */}
+                  <span className="absolute inset-0 overflow-hidden rounded-full">
+                    <span className="absolute -left-full top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700" />
+                  </span>
 
-                {/* Subtle glow overlay */}
-                <span className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-full" />
+                  {/* Subtle glow overlay */}
+                  <span className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-full" />
 
-                <span className="relative z-10 flex items-center gap-2">
-                  View Premium Plans
-                  <motion.span whileHover={{ x: 4 }}>
-                    <ArrowRight size={18} />
-                  </motion.span>
-                </span>
-              </motion.button>
+                  <span className="relative z-10 flex items-center gap-2">
+                    View Premium Plans
+                    <motion.span whileHover={{ x: 4 }}>
+                      <ArrowRight size={18} />
+                    </motion.span>
+                  </span>
+                </motion.button>
+              </Link>
 
-              <motion.button
-                className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-bold flex items-center gap-2 hover:bg-slate-50 transition-all"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                  <Play size={14} fill="currentColor" />
-                </div>
-                How we work
-              </motion.button>
+              <Link to="/about">
+                <motion.button
+                  className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-bold flex items-center gap-2 hover:bg-slate-50 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                    <Play size={14} fill="currentColor" />
+                  </div>
+                  How we work
+                </motion.button>
+              </Link>
             </motion.div>
 
             {/* Floating Trust Badge */}

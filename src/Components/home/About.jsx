@@ -1,10 +1,9 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle2, Award, Target, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const About = () => {
   const highlights = [
-    { title: "SEBI Registered", desc: "Strict adherence to regulatory guidelines.", icon: <Shield size={18} /> },
     { title: "Expert Market Analysis", desc: "Data-driven insights for long-term growth.", icon: <Award size={18} /> },
     { title: "Risk Management", desc: "Capital protection prioritized in every call.", icon: <Target size={18} /> },
   ];
@@ -104,7 +103,7 @@ const About = () => {
               className="text-lg text-slate-600 mb-10 leading-relaxed font-medium"
               variants={itemVariants}
             >
-              HighRise Research, led by SEBI Registered Research Analyst <span className="text-slate-900 font-bold underline decoration-blue-200 underline-offset-4">Our Principal Expert</span>,
+              HighRise Research, led by Research Analyst <span className="text-slate-900 font-bold underline decoration-blue-200 underline-offset-4">Our Principal Expert</span>,
               was founded on the principles of transparency and precision. We bridge the gap between complex market data and actionable investment strategies.
             </motion.p>
 
@@ -144,30 +143,32 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.button
-                className="relative flex items-center gap-2 px-10 py-4 bg-slate-900 text-white rounded-full font-bold shadow-lg shadow-slate-200 overflow-hidden group transition-all duration-300"
-                whileHover={{
-                  scale: 1.05,
-                 
-                  boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3)'
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Shine effect */}
-                <span className="absolute inset-0 overflow-hidden rounded-full">
-                  <span className="absolute -left-full top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700" />
-                </span>
+              <Link to="/about">
+                <motion.button
+                  className="relative flex items-center gap-2 px-10 py-4 bg-slate-900 text-white rounded-full font-bold shadow-lg shadow-slate-200 overflow-hidden group transition-all duration-300"
+                  whileHover={{
+                    scale: 1.05,
+                   
+                    boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3)'
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Shine effect */}
+                  <span className="absolute inset-0 overflow-hidden rounded-full">
+                    <span className="absolute -left-full top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700" />
+                  </span>
 
-                {/* Soft glow */}
-                <span className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-full" />
+                  {/* Soft glow */}
+                  <span className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-full" />
 
-                <span className="relative z-10 flex items-center gap-2">
-                  Learn Our Strategy
-                  <motion.span whileHover={{ scale: 1.2 }}>
-                    <CheckCircle2 size={18} />
-                  </motion.span>
-                </span>
-              </motion.button>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Read More
+                    <motion.span whileHover={{ scale: 1.2 }}>
+                      <CheckCircle2 size={18} />
+                    </motion.span>
+                  </span>
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
 

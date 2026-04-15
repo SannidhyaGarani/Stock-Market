@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquare, Globe, Loader2, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { db } from '../../Firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -89,7 +90,7 @@ const Contact = () => {
                 <span className="text-slate-400 font-light text-4xl">Investment Goals.</span>
               </h3>
               <p className="text-slate-500 font-medium leading-relaxed max-w-md">
-                Have questions about our SEBI-registered research? Our team is here to provide the clarity you need.
+                Have questions about our research? Our team is here to provide the clarity you need.
               </p>
             </motion.div>
 
@@ -292,7 +293,7 @@ const Contact = () => {
                   transition={{ delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  By clicking send, you agree to our <span className="text-blue-600 underline cursor-pointer">Privacy Policy</span>.
+                  By clicking send, you agree to our <Link to="/privacy" className="text-blue-600 underline cursor-pointer">Privacy Policy</Link>.
                 </motion.p>
               </form>
 

@@ -201,13 +201,15 @@ const Services = () => {
               Personalized portfolio advisory for high-volume traders.
             </p>
             
-            <motion.button 
-              className="relative z-10 flex items-center justify-center gap-2 w-fit px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-sm shadow-xl shadow-blue-900/20"
-              whileHover={{ scale: 1.05, backgroundColor: '#3b82f6' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Contact Desk <ExternalLink size={16} />
-            </motion.button>
+            <Link to="/contact">
+              <motion.button 
+                className="relative z-10 flex items-center justify-center gap-2 w-fit px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-sm shadow-xl shadow-blue-900/20"
+                whileHover={{ scale: 1.05, backgroundColor: '#3b82f6' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Contact Desk <ExternalLink size={16} />
+              </motion.button>
+            </Link>
 
             {/* Subtle mesh background for the black card */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent pointer-events-none" />

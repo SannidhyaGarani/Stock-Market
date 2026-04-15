@@ -47,15 +47,14 @@ const Footer = () => {
 
           {/* Brand Identity */}
           <div className="lg:col-span-4 space-y-6">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-900/20 group-hover:bg-blue-500 transition-colors">
-                <Zap size={24} fill="currentColor" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white tracking-tight">
-                  HighRise <span className="text-blue-500">Research</span>
-                </h2>
-                <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">SEBI Registration Analyst</p>
+            <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+              <div className="flex flex-col leading-none">
+                <span className="text-2xl md:text-3xl font-black tracking-tighter text-white">
+                  HIGHRISE
+                </span>
+                <span className="text-xs md:text-sm font-bold tracking-[0.4em] text-blue-500 uppercase -mt-1">
+                  RESEARCH
+                </span>
               </div>
             </Link>
 

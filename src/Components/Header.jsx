@@ -86,23 +86,15 @@ const Navbar = () => {
 
           {/* Brand Identity */}
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative">
-              <motion.div
-                whileHover={{ rotate: 15, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                className="w-10 h-10 md:w-11 md:h-11 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-500/30"
-              >
-                <Zap size={20} fill="currentColor" />
-              </motion.div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-[2.5px] border-white rounded-full animate-pulse shadow-sm" />
-            </div>
             <div className="flex flex-col justify-center">
-              <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900 leading-none">
-                HIGH<span className="text-blue-600">RISE</span>
-              </span>
-              <span className="text-[9px] md:text-[10px] font-bold tracking-wider text-slate-500 flex items-center gap-1 uppercase mt-1">
-                <ShieldCheck size={12} className="text-emerald-500" /> SEBI Registration
-              </span>
+              <div className="flex flex-col leading-none">
+                <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900">
+                  HIGHRISE
+                </span>
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-blue-600 uppercase -mt-0.5">
+                  RESEARCH
+                </span>
+              </div>
             </div>
           </Link>
 
@@ -292,7 +284,7 @@ const Navbar = () => {
                 <motion.div variants={mobileItemVariants} className="pt-4 mt-2 border-t border-slate-100 px-2 pb-2">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>
                     <button className="w-full flex items-center justify-center gap-2 py-4 bg-slate-900 text-white font-bold rounded-2xl shadow-xl shadow-slate-900/20 active:scale-[0.98] transition-all">
-                      Join Premium Access <Zap size={16} className="text-amber-400" />
+                      Join Premium Access
                     </button>
                   </Link>
                 </motion.div>

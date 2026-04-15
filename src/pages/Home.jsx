@@ -14,7 +14,6 @@ const Home = () => {
   return (
     <main className="bg-[#f7f7f5] text-[#111827]">
       <HeroSection />
-      <StatsSection />
       <About />
       <ServicesSection />
       <TrustSection /> 

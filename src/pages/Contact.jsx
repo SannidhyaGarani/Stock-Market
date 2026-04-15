@@ -106,10 +106,7 @@ const Contact = () => {
             </div>
 
             <div className="flex flex-col gap-3 p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
-              <div className="flex items-center gap-3">
-                <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-                <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">SEBI Registration Research Analyst - INH000009427</p>
-              </div>
+              
               <div className="flex items-center gap-3 pt-3 border-t border-emerald-200/50">
                 <Building2 className="text-emerald-500 shrink-0" size={20} />
                 <p className="text-sm font-bold text-emerald-800 uppercase tracking-tight">BSE Enlistment No - 5543</p>

@@ -70,9 +70,7 @@ const PageHero = ({ title, subtitle, backgroundImage, className = '' }) => {
       {/* Vertical Side Tag */}
       <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4">
         <span className="h-20 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-        <p className="text-[14px] text-white/20 font-bold uppercase tracking-[0.6em] [writing-mode:vertical-lr]">
-          EST. 2024
-        </p>
+       
         <span className="h-20 w-[1px] bg-gradient-to-t from-transparent via-white/20 to-transparent" />
       </div>
 

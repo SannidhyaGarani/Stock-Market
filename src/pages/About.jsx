@@ -16,7 +16,7 @@ const About = () => {
       <PageHero
         title="Our Story."
         subtitle="Empowering Retail Traders with Institutional Grade Research"
-        backgroundImage="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop"
+        backgroundImage="https://cdn5.planetspark.in/media/medium_u1228994638_An_Indian_urban_office_setting_with_young_profess_391fafe5_b9ee_47ce_a431_b710986a6de5_3_43bdab5770.png"
       />
 
       {/* --- Introduction Section --- */}
@@ -36,10 +36,7 @@ const About = () => {
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
               Founded with a vision to democratize high-quality financial research, HighRise Research has grown into a premier advisory firm serving retail and institutional traders across India. We believe in transparency, data-driven precision, and the power of disciplined trading.
             </p>
-            <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-              <ShieldCheck className="text-emerald-500 shrink-0" size={24} />
-              <p className="text-sm font-bold text-slate-700">SEBI Registration Research Analyst - INH000000000</p>
-            </div>
+            
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -49,14 +46,14 @@ const About = () => {
           >
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1591696208162-a97749f02bc0?q=80&w=2070&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
                 alt="Our Workspace"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-blue-600 p-8 rounded-[2rem] text-white shadow-xl hidden md:block">
               <TrendingUp size={48} className="mb-4" />
-              <p className="text-2xl font-black">15+ Years</p>
+              <p className="text-2xl font-black">10 Years</p>
               <p className="text-blue-100 font-medium">Market Experience</p>
             </div>
           </motion.div>
@@ -64,28 +61,7 @@ const About = () => {
       </section>
 
       {/* --- Stats Section --- */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                  {stat.icon}
-                </div>
-                <h3 className="text-3xl font-black text-white mb-1">{stat.value}</h3>
-                <p className="text-slate-400 font-medium text-sm">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* --- Values Section --- */}
       <section className="py-24 bg-slate-50">

@@ -29,19 +29,11 @@ const Stats = () => {
   const statsData = [
     {
       icon: BarChart3,
-      value: "5+ Years",
+      value: "10 Years",
       label: "Market Experience",
       color: "text-blue-600",
       bg: "bg-blue-50",
       glow: "group-hover:shadow-blue-500/10",
-    },
-    {
-      icon: Users,
-      value: "1000+",
-      label: "Active Clients",
-      color: "text-indigo-600",
-      bg: "bg-indigo-50",
-      glow: "group-hover:shadow-indigo-500/10",
     },
     {
       icon: Zap,
@@ -52,9 +44,17 @@ const Stats = () => {
       glow: "group-hover:shadow-amber-500/10",
     },
     {
+      icon: Users,
+      value: "1000+",
+      label: "Active Clients",
+      color: "text-indigo-600",
+      bg: "bg-indigo-50",
+      glow: "group-hover:shadow-indigo-500/10",
+    },
+    {
       icon: ShieldCheck,
-      value: "NISM Cert.",
-      label: "Research Series XV",
+      value: "SEBI Reg.",
+      label: "Research Analyst",
       color: "text-sky-600",
       bg: "bg-sky-50",
       glow: "group-hover:shadow-sky-500/10",

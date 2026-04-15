@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
       <PageHero
         title="Privacy Policy"
         subtitle="We understand the confidentiality of your personal information and maintain it forever."
-        backgroundImage="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+        backgroundImage="https://plus.unsplash.com/premium_photo-1700830452563-e3f3e6ce1439?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJpdmFjeXxlbnwwfHwwfHx8MA%3D%3D"
       />
 
       {/* 2. CORE BENTO GRID CONTENT */}

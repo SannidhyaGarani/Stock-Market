@@ -64,7 +64,7 @@ const Complaints = () => {
                 </thead>
                 <tbody>
                   {[
-                    { from: "Directly from Investors", pending: "NIL", received: "1", resolved: "1", total: "NIL", over3: "NIL", avg: "3 Days" },
+                    { from: "Directly from Investors", pending: "NIL", received: "NIL", resolved: "NIL", total: "NIL", over3: "NIL", avg: "NIL" },
                     { from: "SEBI Scores", pending: "NIL", received: "NIL", resolved: "NIL", total: "NIL", over3: "NIL", avg: "NIL" },
                     { from: "Other Sources (If Any)", pending: "NIL", received: "NIL", resolved: "NIL", total: "NIL", over3: "NIL", avg: "NIL" },
                   ].map((row, idx) => (
@@ -81,11 +81,11 @@ const Complaints = () => {
                   <tr className="bg-slate-900/40">
                     <td className="px-6 py-5 text-sm font-black text-white">Grand Total</td>
                     <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
-                    <td className="px-6 py-5 text-sm font-black text-white">1</td>
-                    <td className="px-6 py-5 text-sm font-black text-white">1</td>
                     <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
                     <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
-                    <td className="px-6 py-5 text-sm font-black text-white">3 Days</td>
+                    <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
+                    <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
+                    <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
                   </tr>
                 </tbody>
               </table>
@@ -123,10 +123,10 @@ const Complaints = () => {
                     { month: "Apr-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                     { month: "May-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                     { month: "Jun-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
-                    { month: "Jul-2025", cf: "NIL", received: "1", resolved: "1", pending: "NIL" },
+                    { month: "Jul-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                     { month: "Aug-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
-                    { month: "Sep-2025", cf: "NIL", received: "1", resolved: "1", pending: "NIL" },
-                    { month: "Oct-2025", cf: "NIL", received: "2", resolved: "2", pending: "NIL" },
+                    { month: "Sep-2025", cf: "NIL", received: "NIL", resolved: "NIL" , pending: "NIL" },
+                    { month: "Oct-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                     { month: "Nov-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                   ].map((row, idx) => (
                     <tr key={idx} className={tableRowStyle}>
@@ -170,9 +170,9 @@ const Complaints = () => {
                 <tbody>
                   {[
                     { year: "2022-2023", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
-                    { year: "2023-2024", cf: "NIL", received: "7", resolved: "7", pending: "NIL" },
-                    { year: "2024-2025", cf: "NIL", received: "13", resolved: "13", pending: "NIL" },
-                    { year: "2025-2026", cf: "NIL", received: "7", resolved: "7", pending: "NIL" },
+                    { year: "2023-2024", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
+                    { year: "2024-2025", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
+                    { year: "2025-2026", cf: "NIL", received: "NIL", resolved: "NIL", pending: "NIL" },
                   ].map((row, idx) => (
                     <tr key={idx} className={tableRowStyle}>
                       <td className={tableDataStyle}>{idx + 1}</td>
@@ -186,8 +186,8 @@ const Complaints = () => {
                   <tr className="bg-slate-900/40">
                     <td colSpan={2} className="px-6 py-5 text-sm font-black text-white text-center">Grand Total</td>
                     <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
-                    <td className="px-6 py-5 text-sm font-black text-white">27</td>
-                    <td className="px-6 py-5 text-sm font-black text-white">27</td>
+                    <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
+                    <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
                     <td className="px-6 py-5 text-sm font-black text-white">NIL</td>
                   </tr>
                 </tbody>

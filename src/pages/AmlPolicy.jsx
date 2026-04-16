@@ -202,9 +202,9 @@ const AMLPolicy = () => {
       {/* 4. SUB FOOTER */}
       <footer className="py-10 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-500">
-          <div>
+         <div>
             <p className="text-slate-900 font-black">HighRise Research</p>
-            <p>SEBI Registration Research Analyst | Reg No. INH000000000</p>
+            <p>RE No. BF00075176</p>
           </div>
           <div className="flex gap-6 flex-shrink-0">
             <p className="text-slate-400 font-bold uppercase tracking-widest">Compliance First</p>

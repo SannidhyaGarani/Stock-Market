@@ -209,9 +209,9 @@ const Hero = () => {
               <div className="space-y-3">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Recent Research Wins</p>
                 {[
-                  { label: 'BankNifty Options', profit: '+120 Pts', color: 'text-emerald-600', bg: 'bg-emerald-50' },
+                  { label: 'Nifty Options', profit: '+120 Pts', color: 'text-emerald-600', bg: 'bg-emerald-50' },
                   { label: 'Equity Cash', profit: '+8.4%', color: 'text-blue-600', bg: 'bg-blue-50' },
-                  { label: 'Nifty Expiry Special', profit: '+45 Pts', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+                  { label: 'Equity Future', profit: '+45 Pts', color: 'text-indigo-600', bg: 'bg-indigo-50' },
                 ].map((item, idx) => (
                   <motion.div 
                     key={idx} 

@@ -24,6 +24,7 @@ const Navbar = () => {
   const policyLinks = [
     // { name: 'Privacy Policy', href: '/privacy' },
     // { name: 'Terms & Conditions', href: '/terms' },
+    { name: 'Pay Now', href: '/payment' },
     { name: 'Refund Policy', href: '/refund' },
     { name: 'AML Policy', href: '/aml' },
     { name: 'Disclaimer', href: '/disclaimer' },
@@ -86,13 +87,23 @@ const Navbar = () => {
 
           {/* Brand Identity */}
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-            <div className="flex flex-col justify-center">
-              <div className="flex flex-col leading-none">
-                <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900">
-                  HIGHRISE
+            <div className="flex items-center gap-3 group cursor-pointer">
+              <div className="relative">
+                <motion.div
+                  whileHover={{ rotate: 15, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                  className="w-10 h-10 md:w-11 md:h-11 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-500/30"
+                >
+                  <Zap size={20} fill="currentColor" />
+                </motion.div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-[2.5px] border-white rounded-full animate-pulse shadow-sm" />
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900 leading-none">
+                  HIGH<span className="text-blue-600">RISE</span>
                 </span>
-                <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-blue-600 uppercase -mt-0.5">
-                  RESEARCH
+                <span className="text-[9px] md:text-[10px] font-bold tracking-wider text-slate-500 flex items-center gap-1 uppercase mt-1">
+                  <ShieldCheck size={12} className="text-emerald-500" /> SEBI Registered
                 </span>
               </div>
             </div>

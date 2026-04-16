@@ -24,6 +24,7 @@ import Disclaimer from "./pages/Disclamer.jsx";
 import Complaints from "./pages/Complaints.jsx";
 import KYC from "./pages/KYC.jsx";
 import Alerts from "./pages/Alerts.jsx";
+import Payment from "./pages/Payment.jsx";
 import WhatsAppButton from "./Components/WhatsAppButton.jsx";
 import PopupForm from "./Components/PopupForm.jsx";
 
@@ -67,6 +68,7 @@ function App() {
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/kyc" element={<KYC />} />
         <Route path="/alerts" element={<Alerts />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

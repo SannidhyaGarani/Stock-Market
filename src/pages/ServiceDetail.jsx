@@ -112,8 +112,8 @@ const ServiceDetail = () => {
                            transition={{ delay: 0.2 + i * 0.1 }}
                            whileHover={{ y: -8 }}
                            className={`relative group p-6 rounded-[2rem] border transition-all duration-500 overflow-hidden ${plan.highlight
-                                 ? "bg-slate-900 border-slate-900 shadow-2xl shadow-blue-900/10 text-white"
-                                 : "bg-slate-50 border-slate-200 hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 text-slate-900"
+                              ? "bg-slate-900 border-slate-900 shadow-2xl shadow-blue-900/10 text-white"
+                              : "bg-slate-50 border-slate-200 hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 text-slate-900"
                               }`}
                         >
                            {plan.save && (
@@ -137,68 +137,69 @@ const ServiceDetail = () => {
                            <p className={`text-sm mb-8 font-medium leading-relaxed ${plan.highlight ? "text-slate-400" : "text-slate-500"}`}>
                               {plan.desc}
                            </p>
-
-                           <motion.button
-                              onClick={() => window.dispatchEvent(new Event('open-popup'))}
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${plan.highlight
+                           <Link to="/payment">
+                              <motion.button
+                                 whileHover={{ scale: 1.02 }}
+                                 whileTap={{ scale: 0.98 }}
+                                 className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${plan.highlight
                                     ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
                                     : "bg-slate-900 text-white hover:bg-blue-600"
-                                 }`}
-                           >
-                              Start Now
-                           </motion.button>
+                                    }`}
+                              >
+                                 Start Now
+                              </motion.button></Link>
+
+
                         </motion.div>
                      ))}
                   </div>
 
                   <div className="mt-12 flex items-center justify-between gap-4">
-               {currentIndex > 0 ? (
-                  <Link 
-                     to={`/services/${allServices[currentIndex - 1].id}`}
-                     className="flex-1 group"
-                  >
-                     <motion.div 
-                        whileHover={{ x: -10 }}
-                        className="p-6 md:p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all flex items-center gap-6"
-                     >
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                           <ChevronLeft size={24} />
-                        </div>
-                        <div className="text-left">
-                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Previous Service</p>
-                           <h4 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{allServices[currentIndex - 1].title}</h4>
-                        </div>
-                     </motion.div>
-                  </Link>
-               ) : <div className="flex-1" />}
+                     {currentIndex > 0 ? (
+                        <Link
+                           to={`/services/${allServices[currentIndex - 1].id}`}
+                           className="flex-1 group"
+                        >
+                           <motion.div
+                              whileHover={{ x: -10 }}
+                              className="p-6 md:p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all flex items-center gap-6"
+                           >
+                              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                 <ChevronLeft size={24} />
+                              </div>
+                              <div className="text-left">
+                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Previous Service</p>
+                                 <h4 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{allServices[currentIndex - 1].title}</h4>
+                              </div>
+                           </motion.div>
+                        </Link>
+                     ) : <div className="flex-1" />}
 
-               {currentIndex < allServices.length - 1 ? (
-                  <Link 
-                     to={`/services/${allServices[currentIndex + 1].id}`}
-                     className="flex-1 group"
-                  >
-                     <motion.div 
-                        whileHover={{ x: 10 }}
-                        className="p-6 md:p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all flex items-center justify-between gap-6"
-                     >
-                        <div className="text-right flex-1">
-                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Next Service</p>
-                           <h4 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{allServices[currentIndex + 1].title}</h4>
-                        </div>
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                           <ChevronRight size={24} />
-                        </div>
-                     </motion.div>
-                  </Link>
-               ) : <div className="flex-1" />}
-            </div>
+                     {currentIndex < allServices.length - 1 ? (
+                        <Link
+                           to={`/services/${allServices[currentIndex + 1].id}`}
+                           className="flex-1 group"
+                        >
+                           <motion.div
+                              whileHover={{ x: 10 }}
+                              className="p-6 md:p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all flex items-center justify-between gap-6"
+                           >
+                              <div className="text-right flex-1">
+                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Next Service</p>
+                                 <h4 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{allServices[currentIndex + 1].title}</h4>
+                              </div>
+                              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                 <ChevronRight size={24} />
+                              </div>
+                           </motion.div>
+                        </Link>
+                     ) : <div className="flex-1" />}
+                  </div>
                </div>
             </motion.div>
 
             {/* Navigation Buttons */}
-            
+
          </div>
       </main>
    );

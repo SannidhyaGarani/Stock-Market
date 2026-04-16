@@ -22,8 +22,8 @@ const Navbar = () => {
   ];
 
   const policyLinks = [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms & Conditions', href: '/terms' },
+    // { name: 'Privacy Policy', href: '/privacy' },
+    // { name: 'Terms & Conditions', href: '/terms' },
     { name: 'Refund Policy', href: '/refund' },
     { name: 'AML Policy', href: '/aml' },
     { name: 'Disclaimer', href: '/disclaimer' },

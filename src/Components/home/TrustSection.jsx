@@ -104,38 +104,38 @@ const WhyChooseUs = () => {
 
   const features = [
     {
-      icon: Target,
+      icon: BarChart4,
       color: "text-blue-600",
-      title: "High Conviction",
-      desc: "Institutional-grade research focused on risk-reward excellence.",
+      title: "Structured Analysis",
+      desc: "Data-driven research across equity and index markets.",
       size: "lg:col-span-4",
     },
     {
       icon: ShieldCheck,
       color: "text-emerald-600",
-      title: "SEBI Registration",
-      desc: "Fully compliant advisory ensuring trust & transparency.",
+      title: "Regulatory Compliance",
+      desc: "SEBI-registered research framework focused on transparency.",
       size: "lg:col-span-4",
     },
     {
       icon: Zap,
       color: "text-amber-500",
-      title: "Real-Time Alerts",
-      desc: "Instant signals so you never miss market moves.",
+      title: "Timely Communication",
+      desc: "Updates aligned with evolving market conditions.",
       size: "lg:col-span-4",
     },
     {
-      icon: BarChart4,
+      icon: Target,
       color: "text-indigo-600",
-      title: "Institutional Analysis",
-      desc: "Track smart money using pro-level tools.",
+      title: "Risk Awareness",
+      desc: "Focus on evaluating risks alongside opportunities.",
       size: "lg:col-span-6",
     },
     {
       icon: Clock,
       color: "text-rose-500",
-      title: "Post-Market Support",
-      desc: "We stay with you even after market closes.",
+      title: "Research Continuity",
+      desc: "Ongoing tracking and analysis of covered markets.",
       size: "lg:col-span-6",
     },
   ];
@@ -160,15 +160,15 @@ const WhyChooseUs = () => {
             </p>
 
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
-              Why Traders Trust <br />
+              Why Investors Choose <br />
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-                Our Research Alpha
+                HighRise Research
               </span>
             </h2>
           </div>
 
           <p className="text-slate-500 max-w-sm">
-            We don’t just give tips — we give you a structured edge in volatile markets.
+            We focus on delivering structured, research-driven insights to support informed decision-making in dynamic market conditions.
           </p>
         </motion.div>
 

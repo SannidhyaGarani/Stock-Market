@@ -165,8 +165,8 @@ const Services = () => {
               transition={{ delay: 0.1 }}
               className="text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter"
             >
-              Premium Research <br />
-              <span className="text-slate-400/80 font-light italic">Verticals</span>
+              Research Driven <br />
+              <span className="text-slate-400/80 font-light italic">Insights</span>
             </motion.h3>
           </div>
           <motion.p 
@@ -174,7 +174,7 @@ const Services = () => {
             whileInView={{ opacity: 1 }}
             className="max-w-xs text-slate-500 font-medium leading-relaxed border-l-2 border-blue-600 pl-6"
           >
-            Institutional grade analysis for retail traders. Scalable strategies across all asset classes.
+            Structured market analysis tailored for retail investors across equity and index segments.
           </motion.p>
         </div>
 

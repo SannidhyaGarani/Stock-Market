@@ -95,11 +95,11 @@ const Contact = () => {
                 Connect With Us
               </h2>
               <h3 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6">
-                Let's Discuss Your <br />
-                <span className="text-slate-400 font-light text-4xl">Investment Goals.</span>
+                Let’s Discuss Your <br />
+                <span className="text-slate-400 font-light text-4xl">Research Requirements</span>
               </h3>
               <p className="text-slate-500 font-medium leading-relaxed max-w-md">
-                Have questions about our research? Our team is here to provide the clarity you need.
+                Have questions about our research services? Our team is here to assist you with the information you need.
               </p>
             </motion.div>
 

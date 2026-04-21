@@ -58,12 +58,11 @@ const PaymentSection = () => {
           </div>
 
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            Secure Your <span className="text-blue-600">Trading Edge</span>
+            Get Access to <span className="text-blue-600">Structured Market Research</span>
           </h2>
 
           <p className="text-lg text-slate-500 font-medium leading-relaxed">
-            Choose your preferred mode of transfer. All transactions are
-            processed via our corporate accounts under SEBI regulatory oversight.
+            Select your preferred payment method. Payments are accepted only through authorized company accounts.
           </p>
         </motion.div>
 

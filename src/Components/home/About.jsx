@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const highlights = [
-    { title: "Expert Market Analysis", desc: "Data-driven insights for long-term growth.", icon: <Award size={18} /> },
-    { title: "Risk Management", desc: "Capital protection prioritized in every call.", icon: <Target size={18} /> },
+    { title: "Expert Market Analysis", desc: "Research-driven insights based on data, market trends, and analytical frameworks.", icon: <Award size={18} /> },
+    { title: "Risk Management", desc: "Focus on disciplined analysis with consideration of risk factors in investment decisions.", icon: <Target size={18} /> },
   ];
 
   const containerVariants = {
@@ -103,8 +103,7 @@ const About = () => {
               className="text-lg text-slate-600 mb-10 leading-relaxed font-medium"
               variants={itemVariants}
             >
-              HighRise Research, led by Research Analyst <span className="text-slate-900 font-bold underline decoration-blue-200 underline-offset-4">Our Principal Expert</span>,
-              was founded on the principles of transparency and precision. We bridge the gap between complex market data and actionable investment strategies.
+              HighRise Research, led by SEBI-registered Research Analyst Sannidhya Garani, is built on the principles of transparency and disciplined analysis. We aim to simplify complex market data into well-researched investment perspectives.
             </motion.p>
 
             {/* Bullet Points */}

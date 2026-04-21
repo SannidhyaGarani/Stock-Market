@@ -93,9 +93,9 @@ const Hero = () => {
               className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]"
               variants={itemVariants}
             >
-              Elevate Your <br />
+              Empowering Investors with <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Trading Intelligence
+                Structured Market Insights
               </span>
             </motion.h1>
 
@@ -103,8 +103,8 @@ const Hero = () => {
               className="text-lg text-slate-600 max-w-lg font-medium leading-relaxed"
               variants={itemVariants}
             >
-              Institutional-grade equity and index research by <strong>HighRise Research</strong>.
-              Data-backed calls designed for consistent market alpha.
+              Equity and index research based on structured data analysis and market insights.
+              Advanced frameworks tailored for retail participants across India.
             </motion.p>
 
             <motion.div

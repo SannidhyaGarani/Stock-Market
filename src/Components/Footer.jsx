@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-base leading-relaxed text-slate-300 max-w-sm">
-              Delivering institutional-grade market research and algorithmic strategies to empower the modern retail investor.
+              Empowering Retail Investors with Structured Market Research. Bridging the gap between complex market data and structured market insights.
             </p>
 
             <div className="flex gap-4">
@@ -180,7 +180,7 @@ const Footer = () => {
                 Standard Risk Disclosure
               </h5>
               <p className="text-sm text-slate-400 leading-relaxed italic">
-                Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, membership of BASL and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
+                Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI and certification from NISM do not guarantee the performance of the intermediary or provide any assurance of returns to investors.
               </p>
             </div>
 

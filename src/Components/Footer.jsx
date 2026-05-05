@@ -54,7 +54,7 @@ const Footer = () => {
                 <h2 className="text-2xl font-bold text-white tracking-tight">
                   HighRise <span className="text-blue-500">Research</span>
                 </h2>
-                <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">SEBI Registered Analyst</p>
+                <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">Research Analyst</p>
               </div>
             </Link>
             <p className="text-base leading-relaxed text-slate-300 max-w-sm">
@@ -162,10 +162,9 @@ const Footer = () => {
           <div className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
             <Globe size={32} className="text-emerald-500" />
             <div>
-              <p className="text-sm font-bold text-white uppercase tracking-tight">Market Status</p>
+              <p className="text-sm font-bold text-white uppercase tracking-tight">GST No</p>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                <p className="text-sm text-emerald-400 font-bold uppercase">Active Analysis</p>
+                <p className="text-sm text-emerald-400 font-bold uppercase">NA</p>
               </div>
             </div>
           </div>

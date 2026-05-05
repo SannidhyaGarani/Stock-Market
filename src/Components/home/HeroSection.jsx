@@ -93,9 +93,9 @@ const Hero = () => {
               className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]"
               variants={itemVariants}
             >
-              Empowering Investors with <br />
+              Elevate your  <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Structured Market Insights
+                trading intelligence
               </span>
             </motion.h1>
 

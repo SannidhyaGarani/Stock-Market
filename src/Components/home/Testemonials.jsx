@@ -59,8 +59,8 @@ const Testimonials = () => {
         >
           <div className="max-w-2xl text-left">
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-              Trusted by Thousands of <br />
-              <span className="text-blue-600">Smart Investors</span>
+              Trusted by growing base  <br />
+              <span className="text-blue-600">of Clients</span>
             </h2>
           </div>
           <motion.div 

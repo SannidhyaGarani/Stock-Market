@@ -103,7 +103,7 @@ const Navbar = () => {
                   HIGH<span className="text-blue-600">RISE</span>
                 </span>
                 <span className="text-[9px] md:text-[10px] font-bold tracking-wider text-slate-500 flex items-center gap-1 uppercase mt-1">
-                  <ShieldCheck size={12} className="text-emerald-500" /> SEBI Registered
+                  <ShieldCheck size={12} className="text-emerald-500" />  Research Analyst
                 </span>
               </div>
             </div>

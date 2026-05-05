@@ -103,7 +103,7 @@ const About = () => {
               className="text-lg text-slate-600 mb-10 leading-relaxed font-medium"
               variants={itemVariants}
             >
-              HighRise Research, led by SEBI-registered Research Analyst Sannidhya Garani, is built on the principles of transparency and disciplined analysis. We aim to simplify complex market data into well-researched investment perspectives.
+              HighRise Research, led by SEBI-registered Research Analyst, is built on the principles of transparency and disciplined analysis. We aim to simplify complex market data into well-researched investment perspectives.
             </motion.p>
 
             {/* Bullet Points */}

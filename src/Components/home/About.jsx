@@ -96,7 +96,7 @@ const About = () => {
               variants={itemVariants}
             >
               Empowering Investors with <br />
-              <span className="text-blue-600">Institutional Expertise</span>
+              <span className="text-blue-600">Structured Market Insights</span>
             </motion.h2>
 
             <motion.p

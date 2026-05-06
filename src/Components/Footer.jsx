@@ -162,7 +162,7 @@ const Footer = () => {
           <div className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
             <Globe size={32} className="text-emerald-500" />
             <div>
-              <p className="text-sm font-bold text-white uppercase tracking-tight">GST No</p>
+              <p className="text-sm font-bold text-white uppercase tracking-tight">GSTIN</p>
               <div className="flex items-center gap-2">
                 <p className="text-sm text-emerald-400 font-bold uppercase">NA</p>
               </div>

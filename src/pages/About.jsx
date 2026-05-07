@@ -298,7 +298,7 @@ const About = () => {
       </section>
 
       {/* --- Legal Links Section --- */}
-      <section className="py-12 px-6 md:px-16 max-w-7xl mx-auto text-center border-t border-slate-100">
+      {/* <section className="py-12 px-6 md:px-16 max-w-7xl mx-auto text-center border-t border-slate-100">
         <a 
           href="/rights-and-obligations" 
           className="text-lg font-black text-blue-600 hover:text-blue-700 transition-colors flex items-center justify-center gap-2 group"
@@ -306,7 +306,7 @@ const About = () => {
           Rights and Obligations of Clients and SEBI-Registered Research Analyst
           <span className="group-hover:translate-x-1 transition-transform">→</span>
         </a>
-      </section>
+      </section> */}
     </main>
   );
 };

@@ -91,9 +91,7 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             <motion.div variants={itemVariants}>
-              <h2 className="text-[10px] font-black tracking-[0.3em] text-blue-600 uppercase mb-4">
-                Connect With Us
-              </h2>
+            
               <h3 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6">
                 Let’s Discuss Your <br />
                 <span className="text-slate-400 font-light text-4xl">Research Requirements</span>

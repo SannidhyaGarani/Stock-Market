@@ -52,9 +52,7 @@ const PaymentSection = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600">
             <ShieldCheck size={14} className="animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em]">
-              Verified Institutional Gateway
-            </span>
+           
           </div>
 
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight mb-6">
@@ -267,9 +265,7 @@ const PaymentSection = () => {
           <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
             <Smartphone size={20} />
           </div>
-          <p className="text-slate-700 font-bold">
-            Important: <span className="text-slate-500 font-medium">Please share the transaction screenshot with your registered mobile number for instant activation.</span>
-          </p>
+         
         </motion.div>
       </div>
     </section>

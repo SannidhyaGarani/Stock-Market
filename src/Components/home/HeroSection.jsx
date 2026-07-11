@@ -167,9 +167,7 @@ const Hero = () => {
                   />
                 ))}
               </div>
-              <p className="text-sm font-bold text-slate-500">
-                <span className="text-slate-900">1,200+</span> Active Traders Trusted Us
-              </p>
+             
             </motion.div>
           </motion.div>
 

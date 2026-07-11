@@ -174,12 +174,12 @@ const Footer = () => {
         <div className="space-y-8 py-10 border-t border-slate-800/60">
           <div className="gap-10">
             <div className="space-y-3">
-              <h5 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              {/* <h5 className="text-sm font-bold text-slate-200 flex items-center gap-2">
                 <span className="w-1 h-4 bg-amber-500 rounded-full"></span>
                 Standard Risk Disclosure
-              </h5>
+              </h5> */}
               <p className="text-sm text-slate-400 leading-relaxed italic">
-                Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI and certification from NISM do not guarantee the performance of the intermediary or provide any assurance of returns to investors.
+                Investments in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI and certification from NISM do not guarantee the performance of the intermediary or provide any assurance of returns to investors.
               </p>
             </div>
 

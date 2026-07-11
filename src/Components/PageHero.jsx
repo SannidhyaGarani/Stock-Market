@@ -48,7 +48,7 @@ const PageHero = ({ title, subtitle, backgroundImage, className = '' }) => {
         </h1>
 
         {/* Floating Meta Stats (Compact Row) */}
-        <div className={`mt-10 flex flex-wrap items-center gap-8 md:gap-12 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {/* <div className={`mt-10 flex flex-wrap items-center gap-8 md:gap-12 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="group flex items-center gap-4">
             <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-blue-500 transition-colors">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
@@ -60,7 +60,7 @@ const PageHero = ({ title, subtitle, backgroundImage, className = '' }) => {
           </div>
 
           
-        </div>
+        </div> */}
       </div>
 
       {/* --- Luxury Accents --- */}

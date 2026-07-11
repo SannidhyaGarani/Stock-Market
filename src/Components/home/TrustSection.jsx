@@ -155,9 +155,7 @@ const WhyChooseUs = () => {
           className="flex flex-col md:flex-row justify-between mb-16 gap-8"
         >
           <div>
-            <p className="text-xs font-black tracking-[0.3em] text-blue-600 mb-4 uppercase">
-              The HighRise Advantage
-            </p>
+           
 
             <h2 className="text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
               Why Investors Choose <br />
@@ -167,9 +165,9 @@ const WhyChooseUs = () => {
             </h2>
           </div>
 
-          <p className="text-slate-500 max-w-sm">
+          {/* <p className="text-slate-500 max-w-sm">
             We focus on delivering structured, research-driven insights to support informed decision-making in dynamic market conditions.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* GRID */}

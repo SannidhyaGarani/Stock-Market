@@ -157,7 +157,7 @@ const Services = () => {
               whileInView={{ opacity: 1, x: 0 }}
               className="inline-block px-4 py-1.5 mb-6 text-[11px] font-black tracking-[0.3em] text-blue-600 uppercase bg-blue-50 rounded-full"
             >
-              Our Expertise
+           
             </motion.span>
             <motion.h3 
               initial={{ opacity: 0, y: 20 }}
@@ -185,35 +185,7 @@ const Services = () => {
           ))}
 
           {/* Institutional CTA Card - Distinct Premium Style */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="relative group overflow-hidden rounded-[2.5rem] bg-slate-900 p-10 flex flex-col justify-center text-left min-h-[320px]"
-          >
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-              <Layers size={120} className="text-white" />
-            </div>
-            
-            <h4 className="relative z-10 text-3xl font-bold text-white mb-4">
-              Custom <br /> Institutional
-            </h4>
-            <p className="relative z-10 text-slate-400 text-sm mb-8 max-w-[200px]">
-              Personalized portfolio advisory for high-volume traders.
-            </p>
-            
-            <Link to="/contact">
-              <motion.button 
-                className="relative z-10 flex items-center justify-center gap-2 w-fit px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-sm shadow-xl shadow-blue-900/20"
-                whileHover={{ scale: 1.05, backgroundColor: '#3b82f6' }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Contact Desk <ExternalLink size={16} />
-              </motion.button>
-            </Link>
-
-            {/* Subtle mesh background for the black card */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent pointer-events-none" />
-          </motion.div>
+          
         </div>
       </div>
     </section>

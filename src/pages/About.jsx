@@ -50,9 +50,9 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-[11px] font-black tracking-[0.3em] text-blue-600 uppercase bg-blue-50 rounded-full">
+            {/* <span className="inline-block px-4 py-1.5 mb-6 text-[11px] font-black tracking-[0.3em] text-blue-600 uppercase bg-blue-50 rounded-full">
               Who We Are
-            </span>
+            </span> */}
             <h2 className="text-4xl md:text-5xl font-black leading-tight mb-8 tracking-tight text-slate-900">
               HighRise Research <span className="text-blue-600 italic">bridges the gap</span> between complex market data and structured market insights.
             </h2>
@@ -92,9 +92,9 @@ const About = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">
               A SEBI-Registered <span className="text-blue-500">Advisory Firm.</span>
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            {/* <p className="text-slate-400 text-lg leading-relaxed">
               We specialize in high-conviction intraday strategies and option signals, designed for precision and risk control.
-            </p>
+            </p> */}
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div 
@@ -133,7 +133,7 @@ const About = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="text-center mb-20">
-            <span className="text-blue-600 font-black tracking-widest text-xs uppercase">The Foundation</span>
+            {/* <span className="text-blue-600 font-black tracking-widest text-xs uppercase">The Foundation</span> */}
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-6 tracking-tight">Our Philosophy</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">Successful trading is not about chasing every move—it’s about waiting for the right opportunity and executing with discipline.</p>
           </div>
@@ -180,12 +180,12 @@ const About = () => {
               ))}
             </div>
           </div>
-          <div className="bg-slate-900 p-8 md:p-12 rounded-[3.5rem] text-white">
+          {/* <div className="bg-slate-900 p-8 md:p-12 rounded-[3.5rem] text-white">
             <ShieldCheck size={48} className="text-blue-500 mb-8" />
             <h3 className="text-3xl font-bold mb-6 italic leading-tight">"We don’t believe in gambling in the markets—we believe in calculated, disciplined execution."</h3>
             <div className="h-1 w-20 bg-blue-500 rounded-full mb-8"></div>
             <p className="text-slate-400 uppercase tracking-widest text-sm font-black">Our Commitment</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -212,7 +212,7 @@ const About = () => {
             <div className="bg-slate-50 p-10 rounded-[2.5rem] flex gap-6 items-start">
               <TrendingUp className="text-slate-900 mt-1" size={32} />
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Serious Traders</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Strategic Traders</h3>
                 <p className="text-slate-600">Individuals looking for structured intraday strategies and long-term consistency.</p>
               </div>
             </div>
@@ -271,7 +271,7 @@ const About = () => {
               </ul>
             </div>
             
-            <div className="space-y-8">
+            {/* <div className="space-y-8">
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 className="p-10 rounded-[2.5rem] bg-blue-600 text-white shadow-xl shadow-blue-100"
@@ -286,14 +286,14 @@ const About = () => {
                 <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-4 opacity-80">Our Mission</h4>
                 <p className="text-lg font-bold">To help traders protect capital, trade with confidence, and build long-term consistency through research-driven strategies.</p>
               </motion.div>
-            </div>
+            </div> */}
           </div>
 
-          <div className="mt-20 p-12 bg-blue-50 rounded-[3rem] text-center border border-blue-100">
+          {/* <div className="mt-20 p-12 bg-blue-50 rounded-[3rem] text-center border border-blue-100">
             <p className="text-2xl font-bold text-slate-900 leading-relaxed max-w-4xl mx-auto">
               "We don’t chase profits—we focus on protecting capital and executing disciplined trades, because in the long run, <span className="text-blue-600 italic underline decoration-blue-200 underline-offset-4">consistency always outperforms speculation.</span>"
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 

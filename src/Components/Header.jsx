@@ -87,17 +87,16 @@ const Navbar = () => {
 
           {/* Brand Identity */}
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-  <div className="relative">
+  {/* <div className="relative">
     <motion.div
       whileHover={{ rotate: 12, scale: 1.1 }}
       transition={{ type: "spring", stiffness: 400 }}
       className="w-11 h-11 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-xl shadow-slate-200"
     >
-      {/* Original electric icon preserved with updated container */}
       <Zap size={22} fill="currentColor" className="text-blue-400" />
     </motion.div>
     <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse" />
-  </div>
+  </div> */}
 
   <div className="flex flex-col justify-center">
     <div className="flex flex-col">

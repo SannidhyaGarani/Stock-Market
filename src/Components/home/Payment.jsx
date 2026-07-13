@@ -50,10 +50,8 @@ const PaymentSection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600">
-            <ShieldCheck size={14} className="animate-pulse" />
+        
            
-          </div>
 
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight mb-6">
             Get Access to <span className="text-blue-600">Structured Market Research</span>
@@ -255,7 +253,7 @@ const PaymentSection = () => {
         </div>
 
         {/* Bottom Banner */}
-        <motion.div
+        {/* <motion.div
           className="mt-12 p-6 rounded-[2rem] bg-blue-50 border border-blue-100 flex flex-col md:flex-row items-center justify-center gap-4 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -266,7 +264,7 @@ const PaymentSection = () => {
             <Smartphone size={20} />
           </div>
          
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
